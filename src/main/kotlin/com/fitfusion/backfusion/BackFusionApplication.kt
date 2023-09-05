@@ -1,11 +1,13 @@
 package com.fitfusion.backfusion
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
+import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
 import org.springframework.boot.runApplication
 
-@SpringBootApplication
+@SpringBootApplication(exclude = [SecurityAutoConfiguration::class])
 class BackFusionApplication
 
 fun main(args: Array<String>) {
+
 	runApplication<BackFusionApplication>(*args)
 }
