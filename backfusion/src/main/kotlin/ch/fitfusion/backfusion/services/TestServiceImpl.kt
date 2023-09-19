@@ -7,5 +7,7 @@ import org.springframework.stereotype.Service
 @Service
 class TestServiceImpl : TestService {
 
-    override fun test() = TestDTO("Hello there")
+    override fun test() = TestDTO("Hello Anonymous")
+
+    override fun authTest() = TestDTO("Hello Authenticated")
 }

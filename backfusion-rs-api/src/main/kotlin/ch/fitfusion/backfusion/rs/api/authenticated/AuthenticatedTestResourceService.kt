@@ -1,4 +1,4 @@
-package ch.fitfusion.backfusion.rs.api
+package ch.fitfusion.backfusion.rs.api.authenticated
 
 import ch.fitfusion.backfusion.api.dtos.TestDTO
 import io.swagger.v3.oas.annotations.Operation
@@ -7,13 +7,12 @@ import io.swagger.v3.oas.annotations.tags.Tag
 import org.springframework.http.ResponseEntity
 
 @Tag(name = "Test Services")
-interface TestResourceService {
+interface AuthenticatedTestResourceService {
 
-    @Operation(summary = "Get a TestDTO from the API!")
+    @Operation(summary = "Gets a TestDTO from the secured part of the API")
     @ApiResponse(
         responseCode = "200",
         description = "TestDTO",
     )
-    @ApiResponse()
-    fun test(): ResponseEntity<TestDTO>
+    fun authTest(): ResponseEntity<TestDTO>
 }
