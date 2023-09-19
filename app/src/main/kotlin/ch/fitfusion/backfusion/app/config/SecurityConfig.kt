@@ -1,5 +1,6 @@
 package ch.fitfusion.backfusion.app.config
 
+import ch.fitfusion.backfusion.app.rbac.JWTAuthenticationFilter
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.security.authentication.AuthenticationManager
@@ -9,6 +10,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.security.web.SecurityFilterChain
+import org.springframework.security.web.access.intercept.AuthorizationFilter
+
 
 @Configuration
 @EnableWebSecurity
@@ -25,10 +28,17 @@ open class SecurityConfig {
     @Bean
     open fun configure(httpSecurity: HttpSecurity): SecurityFilterChain {
 
-        return httpSecurity.authorizeHttpRequests {
-            it.requestMatchers(*AUTH_WHITELIST).permitAll()
-                .anyRequest().authenticated()
-        }.build()
+        httpSecurity
+            .csrf { }
+            .httpBasic { it.disable() }
+            .formLogin { it.disable() }
+            .authorizeHttpRequests {
+                it.requestMatchers(*AUTH_WHITELIST).permitAll()
+                    .anyRequest().authenticated()
+            }
+            .addFilterAfter(JWTAuthenticationFilter(), AuthorizationFilter  ::class.java)
+
+        return httpSecurity.build()
     }
 
     @Bean
