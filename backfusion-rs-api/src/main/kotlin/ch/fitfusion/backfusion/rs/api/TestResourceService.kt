@@ -14,5 +14,6 @@ interface TestResourceService {
         responseCode = "200",
         description = "TestDTO",
     )
+    @ApiResponse()
     fun test(): ResponseEntity<TestDTO>
 }
