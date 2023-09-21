@@ -19,8 +19,9 @@
 
     <modules>
         <module>app</module>
-        <module>backfusion-api</module>
         <module>backfusion</module>
+        <module>backfusion-api</module>
+        <module>backfusion-auth</module>
         <module>backfusion-rs-api</module>
         <module>backfusion-rs-server</module>
     </modules>
@@ -56,6 +57,12 @@
 
             <dependency>
                 <groupId>ch.fitfusion.backfusion</groupId>
+                <artifactId>backfusion-auth</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>ch.fitfusion.backfusion</groupId>
                 <artifactId>backfusion-rs-api</artifactId>
                 <version>${project.version}</version>
             </dependency>
@@ -64,6 +71,13 @@
                 <groupId>ch.fitfusion.backfusion</groupId>
                 <artifactId>backfusion-rs-server</artifactId>
                 <version>${project.version}</version>
+            </dependency>
+
+            <!-- Other -->
+            <dependency>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt</artifactId>
+                <version>0.9.1</version>
             </dependency>
 
             <!-- Swagger -->
@@ -78,7 +92,6 @@
                 <artifactId>swagger-core</artifactId>
                 <version>2.2.15</version>
             </dependency>
-
 
             <!-- Necessary Kotlin Dependencies -->
             <dependency>

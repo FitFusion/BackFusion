@@ -10,27 +10,11 @@
         <version>1.0.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>app</artifactId>
+    <artifactId>backfusion-auth</artifactId>
 
     <dependencies>
 
-        <!-- Module dependencies -->
-        <dependency>
-            <groupId>ch.fitfusion.backfusion</groupId>
-            <artifactId>backfusion-rs-server</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>ch.fitfusion.backfusion</groupId>
-            <artifactId>backfusion-auth</artifactId>
-        </dependency>
-
-        <!-- Spring-Boot Dependencies-->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-tomcat</artifactId>
-        </dependency>
-
+        <!-- Spring-Boot dependencies -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
@@ -39,23 +23,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>io.jsonwebtoken</groupId>
-            <artifactId>jjwt</artifactId>
-        </dependency>
-
-        <!-- Test dependencies -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-engine</artifactId>
         </dependency>
 
         <!-- Necessary Kotlin Dependencies-->
