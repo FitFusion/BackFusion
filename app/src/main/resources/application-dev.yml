@@ -1,3 +1,5 @@
 spring:
   datasource:
     url: "jdbc:localhost:5432/backfusion"
+  logging:
+    level: DEBUG
