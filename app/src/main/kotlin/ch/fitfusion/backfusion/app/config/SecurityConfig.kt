@@ -54,9 +54,9 @@ open class SecurityConfig(
     }
 
     @Bean
-    open fun configureAuthManager(authManager: AuthenticationManagerBuilder) {
-        authManager.userDetailsService(userDetailsService)
-            .passwordEncoder(bCryptPasswordEncoder())
+    open fun authManager(authManager: AuthenticationManagerBuilder) {
+
+        authManager.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder())
     }
 
     @Bean

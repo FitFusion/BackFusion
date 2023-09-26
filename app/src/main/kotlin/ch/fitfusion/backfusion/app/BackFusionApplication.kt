@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfigurat
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
 import org.springframework.boot.runApplication
 import org.springframework.context.annotation.ComponentScan
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories
 
 @ComponentScan(
     "ch.fitfusion.backfusion",
@@ -14,10 +15,11 @@ import org.springframework.context.annotation.ComponentScan
 @EntityScan(
     "ch.fitfusion.backfusion",
 )
+@EnableJpaRepositories(
+    "ch.fitfusion.backfusion"
+)
 @SpringBootApplication(exclude = [
     SecurityAutoConfiguration::class,
-    DataSourceAutoConfiguration::class,
-    HibernateJpaAutoConfiguration::class
 ])
 open class BackFusionApplication
 
