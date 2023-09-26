@@ -1,3 +1,17 @@
 spring:
+# DB config
   datasource:
     url: "jdbc:localhost:5432/backfusion"
+    username: postgres
+    password: postgres
+# JPA config
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQL81Dialect
+    hibernate:
+      ddl-auto: none
+    defer-datasource-initialization: true
+# JWT config
+jwt:
+  secret: "UPDATE THIS SHIT"

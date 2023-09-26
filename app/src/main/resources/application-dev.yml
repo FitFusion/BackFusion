@@ -1,5 +1,26 @@
 spring:
+# DB config
   datasource:
-    url: "jdbc:localhost:5432/backfusion"
-  logging:
-    level: DEBUG
+    url: jdbc:h2:mem:backfusion
+    username: admin
+    password: admin
+    driverClassName: org.h2.Driver
+# JPA config
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
+    defer-datasource-initialization: true
+    show-sql: true
+# Logging config
+logging:
+  level:
+    org:
+      hibernate:
+        tool:
+          hbm2ddl: TRACE
+# JWT config
+jwt:
+  secret: "UPDATE THIS SHIT"

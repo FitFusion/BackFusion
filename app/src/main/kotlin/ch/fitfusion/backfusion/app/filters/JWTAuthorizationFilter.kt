@@ -27,7 +27,11 @@ class JWTAuthorizationFilter : OncePerRequestFilter() {
     }
 
     override fun shouldNotFilter(request: HttpServletRequest): Boolean {
-        logger.info("Filter for req ${request.requestURI} skipped")
-        return AUTH_WHITELIST_PATTERN.any { Pattern.matches(it, request.requestURI) }
+
+        val shouldSkip = AUTH_WHITELIST_PATTERN.any { Pattern.matches(it, request.requestURI) }
+
+        if (shouldSkip) logger.info("Skip ${this.javaClass.simpleName} for ${request.requestURI}")
+
+        return shouldSkip
     }
 }
