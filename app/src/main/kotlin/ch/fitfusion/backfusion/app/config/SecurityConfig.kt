@@ -23,6 +23,7 @@ val AUTH_WHITELIST = arrayOf(
     "/anonymous/**",
     "/h2-console",
     "/h2-console/**",
+    "/favicon.ico"
 )
 
 val AUTH_WHITELIST_PATTERN = arrayOf(

@@ -1,4 +1,6 @@
 spring:
+profiles:
+  active: prod
 # DB config
   datasource:
     url: "jdbc:localhost:5432/backfusion"

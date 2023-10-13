@@ -1,8 +1,9 @@
 package ch.fitfusion.backfusion.api.dtos
 
 import ch.fitfusion.backfusion.api.validation.ValidationResult
+import jdk.incubator.vector.VectorOperators.Test
 
 class TestOutDTO(
-    private val testDTO: TestDTO,
-    validationResult: ValidationResult = ValidationResult.ok(),
-) : OutDTO(validationResult)
+    val testDTO: TestDTO,
+    val validationResult: ValidationResult = ValidationResult.ok(),
+)

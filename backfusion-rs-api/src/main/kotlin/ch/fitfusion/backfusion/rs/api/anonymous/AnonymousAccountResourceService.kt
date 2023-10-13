@@ -1,7 +1,7 @@
 package ch.fitfusion.backfusion.rs.api.anonymous
 
 import ch.fitfusion.backfusion.api.dtos.AccountOutDTO
-import ch.fitfusion.backfusion.api.dtos.OutDTO
+import ch.fitfusion.backfusion.api.dtos.ValidationDTO
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.responses.ApiResponse
 import io.swagger.v3.oas.annotations.tags.Tag
@@ -27,5 +27,5 @@ interface AnonymousAccountResourceService {
         responseCode = "200",
         description = "TestDTO",
     )
-    fun validateEmail(): ResponseEntity<OutDTO>
+    fun validateEmail(): ResponseEntity<ValidationDTO>
 }

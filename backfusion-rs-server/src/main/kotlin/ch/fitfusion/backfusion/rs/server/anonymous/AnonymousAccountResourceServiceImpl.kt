@@ -1,7 +1,7 @@
 package ch.fitfusion.backfusion.rs.server.anonymous
 
 import ch.fitfusion.backfusion.api.dtos.AccountOutDTO
-import ch.fitfusion.backfusion.api.dtos.OutDTO
+import ch.fitfusion.backfusion.api.dtos.ValidationDTO
 import ch.fitfusion.backfusion.api.services.AccountService
 import ch.fitfusion.backfusion.rs.api.anonymous.AnonymousAccountResourceService
 import org.springframework.http.ResponseEntity
@@ -13,10 +13,11 @@ class AnonymousAccountResourceServiceImpl(
 ) : AnonymousAccountResourceService {
 
     override fun register(): ResponseEntity<AccountOutDTO> {
-        return ResponseEntity.ok(accountService.register())
+        val register = accountService.register()
+        return ResponseEntity.ok(register)
     }
 
-    override fun validateEmail(): ResponseEntity<OutDTO> {
+    override fun validateEmail(): ResponseEntity<ValidationDTO> {
         return ResponseEntity.ok(accountService.validateEmail())
     }
 }
