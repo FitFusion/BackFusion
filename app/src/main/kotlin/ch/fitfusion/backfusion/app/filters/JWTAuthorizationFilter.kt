@@ -1,15 +1,11 @@
 package ch.fitfusion.backfusion.app.filters
 
-import ch.fitfusion.backfusion.app.config.AUTH_WHITELIST_PATTERN
 import jakarta.servlet.FilterChain
 import jakarta.servlet.http.HttpServletRequest
 import jakarta.servlet.http.HttpServletResponse
-import org.springframework.core.annotation.Order
 import org.springframework.security.access.AccessDeniedException
 import org.springframework.web.filter.OncePerRequestFilter
-import java.util.regex.Pattern
 
-@Order(20)
 class JWTAuthorizationFilter : OncePerRequestFilter() {
 
     override fun doFilterInternal(request: HttpServletRequest, response: HttpServletResponse, chain: FilterChain) {
@@ -23,15 +19,10 @@ class JWTAuthorizationFilter : OncePerRequestFilter() {
         }
 
         logger.debug("Creds invalid")
-        throw AccessDeniedException("Creds invalid!")
+        throw AccessDeniedException("Credentials invalid!")
     }
 
     override fun shouldNotFilter(request: HttpServletRequest): Boolean {
-
-        val shouldSkip = AUTH_WHITELIST_PATTERN.any { Pattern.matches(it, request.requestURI) }
-
-        if (shouldSkip) logger.info("Skip ${this.javaClass.simpleName} for ${request.requestURI}")
-
-        return shouldSkip
+        return skipAnonymousUrl(request, this::class)
     }
 }
