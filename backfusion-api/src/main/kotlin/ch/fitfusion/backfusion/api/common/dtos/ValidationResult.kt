@@ -1,4 +1,4 @@
-package ch.fitfusion.backfusion.api.validation
+package ch.fitfusion.backfusion.api.common.dtos
 
 class ValidationResult() {
 

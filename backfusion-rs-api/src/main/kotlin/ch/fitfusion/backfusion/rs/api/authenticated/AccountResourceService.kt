@@ -1,7 +1,7 @@
 package ch.fitfusion.backfusion.rs.api.authenticated
 
-import ch.fitfusion.backfusion.api.dtos.AccountDTO
-import ch.fitfusion.backfusion.api.dtos.AccountOutDTO
+import ch.fitfusion.backfusion.api.account.dtos.AccountDTO
+import ch.fitfusion.backfusion.api.account.dtos.AccountOutDTO
 import io.swagger.v3.oas.annotations.Operation
 import io.swagger.v3.oas.annotations.responses.ApiResponse
 import io.swagger.v3.oas.annotations.tags.Tag

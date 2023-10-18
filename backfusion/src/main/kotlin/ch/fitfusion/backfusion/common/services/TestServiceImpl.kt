@@ -1,7 +1,7 @@
-package ch.fitfusion.backfusion.services
+package ch.fitfusion.backfusion.common.services
 
-import ch.fitfusion.backfusion.api.dtos.TestDTO
-import ch.fitfusion.backfusion.api.services.TestService
+import ch.fitfusion.backfusion.api.test.dtos.TestDTO
+import ch.fitfusion.backfusion.api.common.services.TestService
 import org.springframework.stereotype.Service
 
 @Service

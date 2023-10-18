@@ -1,8 +1,8 @@
 package ch.fitfusion.backfusion.rs.server.authenticated
 
-import ch.fitfusion.backfusion.api.dtos.AccountDTO
-import ch.fitfusion.backfusion.api.dtos.AccountOutDTO
-import ch.fitfusion.backfusion.api.services.AccountService
+import ch.fitfusion.backfusion.api.account.dtos.AccountDTO
+import ch.fitfusion.backfusion.api.account.dtos.AccountOutDTO
+import ch.fitfusion.backfusion.api.account.services.AccountService
 import ch.fitfusion.backfusion.rs.api.authenticated.AccountResourceService
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.RestController

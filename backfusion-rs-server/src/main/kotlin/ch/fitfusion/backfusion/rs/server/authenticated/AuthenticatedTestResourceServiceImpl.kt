@@ -1,6 +1,6 @@
 package ch.fitfusion.backfusion.rs.server.authenticated
 
-import ch.fitfusion.backfusion.api.services.TestService
+import ch.fitfusion.backfusion.api.common.services.TestService
 import ch.fitfusion.backfusion.rs.api.authenticated.AuthenticatedTestResourceService
 import org.springframework.http.HttpStatus.OK
 import org.springframework.http.ResponseEntity

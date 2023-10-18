@@ -31,8 +31,8 @@ CREATE TABLE Account_Authority
 
 
 INSERT INTO Account (USERNAME, PASSWORD, EMAIL, EMAIL_VERIFIED, SECOND_FACTOR_ENABLED, CREATION_DATE)
-VALUES ('admin', 'admin', 'admin@fitfusion.ch', TRUE, FALSE, CURRENT_TIMESTAMP()),
-       ('user', 'user', 'user@fitfusion.ch', TRUE, FALSE, CURRENT_TIMESTAMP());
+VALUES ('admin', '$2a$10$ZvpJ1kkkdv7TGFdhumrDP.updwnFc97kxvUIg1WEhb4XkB94P3/Mq', 'admin@fitfusion.ch', TRUE, FALSE, CURRENT_TIMESTAMP()),
+       ('user', '$2a$10$0mxmoCN37uZPWgq3mpm0mOyxPdVCpAmL/qbC1/2jfJIDvf6Y46ncK', 'user@fitfusion.ch', TRUE, FALSE, CURRENT_TIMESTAMP());
 
 INSERT INTO Authority (name)
 VALUES ('ROLE_USER'),

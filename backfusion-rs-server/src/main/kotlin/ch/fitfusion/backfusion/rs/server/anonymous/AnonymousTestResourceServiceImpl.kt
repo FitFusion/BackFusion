@@ -1,6 +1,6 @@
 package ch.fitfusion.backfusion.rs.server.anonymous
 
-import ch.fitfusion.backfusion.api.services.TestService
+import ch.fitfusion.backfusion.api.common.services.TestService
 import ch.fitfusion.backfusion.rs.api.anonymous.AnonymousTestResourceService
 import org.springframework.http.HttpStatus.OK
 import org.springframework.http.ResponseEntity
