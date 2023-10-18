@@ -23,4 +23,5 @@ logging:
           hbm2ddl: TRACE
 # JWT config
 jwt:
-  secret: "UPDATE THIS SHIT"
+  secret: "T2i8xH5hK+pjXK2Wm7/L1g7Y3Y+3mG52qZsFzr8cH2QIB3cQ5uWVQmtiNl+3Zc2lq8yQV/7o+y0G1CxFuUjFb5N6RQ=="
+  exp-time: 1800 # 30 * 60 => 30min
