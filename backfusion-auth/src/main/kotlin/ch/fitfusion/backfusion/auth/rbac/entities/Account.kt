@@ -2,11 +2,11 @@ package ch.fitfusion.backfusion.auth.rbac.entities
 
 import ch.fitfusion.backfusion.auth.rbac.entities.listeners.AccountListener
 import jakarta.persistence.*
-import org.hibernate.internal.util.collections.CollectionHelper.listOf
 import java.util.*
 
+
 @Entity
-@Table(name = "TBL_Account")
+@Table(name = "Account")
 @EntityListeners(AccountListener::class)
 class Account {
 
@@ -33,7 +33,11 @@ class Account {
     @Column
     var creationDate: Date = Date()
 
-    @Column
-    @ElementCollection(fetch = FetchType.EAGER)
-    var authorities: List<String> = listOf()
+    @ManyToMany(cascade = [CascadeType.ALL])
+    @JoinTable(
+        name = "Account_Authority",
+        joinColumns = [JoinColumn(name = "account_id")],
+        inverseJoinColumns = [JoinColumn(name = "authority_id")]
+    )
+    val authorities: Set<Authority> = HashSet()
 }

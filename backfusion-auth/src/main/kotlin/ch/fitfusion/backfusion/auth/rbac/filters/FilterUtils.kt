@@ -1,7 +1,9 @@
-package ch.fitfusion.backfusion.app.filters
+package ch.fitfusion.backfusion.auth.rbac.filters
 
-import ch.fitfusion.backfusion.app.config.AUTH_WHITELIST_PATTERN
+import ch.fitfusion.backfusion.auth.rbac.AUTH_WHITELIST_PATTERN
 import jakarta.servlet.http.HttpServletRequest
+import org.springframework.http.HttpMethod
+import org.springframework.web.HttpRequestMethodNotSupportedException
 import java.util.regex.Pattern
 import kotlin.reflect.KClass
 
@@ -14,3 +16,8 @@ fun <T : Any> skipAnonymousUrl(request: HttpServletRequest, caller: KClass<T>): 
     return shouldSkip
 }
 
+fun HttpServletRequest.assertMethod(method: HttpMethod) {
+    if (this.method != method.name()) {
+        throw HttpRequestMethodNotSupportedException(this.method)
+    }
+}

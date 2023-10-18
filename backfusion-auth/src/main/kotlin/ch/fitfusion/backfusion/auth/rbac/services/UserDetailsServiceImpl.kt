@@ -7,12 +7,14 @@ import org.springframework.security.core.userdetails.User
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.core.userdetails.UserDetailsService
 import org.springframework.stereotype.Service
+import org.springframework.transaction.annotation.Transactional
 
 @Service
-class UserDetailsServiceImpl(
+open class UserDetailsServiceImpl(
     private val accountRepository: AccountRepository,
 ) : UserDetailsService {
 
+    @Transactional
     override fun loadUserByUsername(username: String?): UserDetails {
 
         if (username == null) {
@@ -23,7 +25,7 @@ class UserDetailsServiceImpl(
             .orElseThrow { AccessDeniedException("User $username not found") }
 
         val grantedAuthorities = account.authorities.stream()
-            .map { GrantedAuthority { it } }
+            .map { GrantedAuthority { it.name } }
             .toList()
 
         return User(username, account.password, grantedAuthorities)

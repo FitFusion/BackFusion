@@ -1,7 +1,8 @@
 package ch.fitfusion.backfusion.app.config
 
-import ch.fitfusion.backfusion.app.filters.JWTAuthenticationFilter
-import ch.fitfusion.backfusion.app.filters.JWTAuthorizationFilter
+import ch.fitfusion.backfusion.auth.rbac.AUTH_WHITELIST
+import ch.fitfusion.backfusion.auth.rbac.filters.JWTAuthenticationFilter
+import ch.fitfusion.backfusion.auth.rbac.filters.JWTAuthorizationFilter
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.security.authentication.AuthenticationManager
@@ -13,32 +14,16 @@ import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.security.web.SecurityFilterChain
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter
 
-
-val AUTH_WHITELIST = arrayOf(
-    "/api-docs",
-    "/api-docs/**",
-    "/swagger-resources/",
-    "/swagger-ui",
-    "/swagger-ui.html",
-    "/anonymous/**",
-    "/h2-console",
-    "/h2-console/**",
-    "/favicon.ico"
-)
-
-val AUTH_WHITELIST_PATTERN = arrayOf(
-    "\\/anonymous\\/[\\d\\D]*",
-    "\\/h2-console[\\d\\D]*",
-)
-
 @Configuration
 @EnableWebSecurity
-open class SecurityConfig {
+open class SecurityConfig(
+    private val authenticationConfiguration: AuthenticationConfiguration,
+) {
 
     @Bean
     open fun filterChain(httpSecurity: HttpSecurity): SecurityFilterChain {
 
-        val jwtAuthenticationFilter = JWTAuthenticationFilter()
+        val jwtAuthenticationFilter = JWTAuthenticationFilter(authenticationManager())
         jwtAuthenticationFilter.setFilterProcessesUrl("/authenticate")
 
         httpSecurity
@@ -56,7 +41,7 @@ open class SecurityConfig {
     }
 
     @Bean
-    open fun authenticationManager(authenticationConfiguration: AuthenticationConfiguration): AuthenticationManager {
+    open fun authenticationManager(): AuthenticationManager {
         return authenticationConfiguration.authenticationManager
     }
 

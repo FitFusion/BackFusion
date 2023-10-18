@@ -1,27 +1,23 @@
-package ch.fitfusion.backfusion.app.filters
+package ch.fitfusion.backfusion.auth.rbac.filters
 
-import io.swagger.v3.oas.models.PathItem.HttpMethod
 import jakarta.servlet.FilterChain
 import jakarta.servlet.http.HttpServletRequest
 import jakarta.servlet.http.HttpServletResponse
+import org.springframework.http.HttpMethod.POST
+import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken.unauthenticated
 import org.springframework.security.core.Authentication
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter
-import org.springframework.stereotype.Component
-import org.springframework.web.HttpRequestMethodNotSupportedException
 import java.nio.charset.StandardCharsets.UTF_8
-import java.util.Base64
+import java.util.*
 
-@Component
-class JWTAuthenticationFilter : UsernamePasswordAuthenticationFilter() {
-
-    private var postOnly = true
+class JWTAuthenticationFilter(
+    authenticationManager: AuthenticationManager
+) : UsernamePasswordAuthenticationFilter(authenticationManager) {
 
     override fun attemptAuthentication(request: HttpServletRequest, response: HttpServletResponse?): Authentication {
 
-        if (postOnly && request.method != HttpMethod.POST.name) {
-            throw HttpRequestMethodNotSupportedException("Method ${request.method} not supported.")
-        }
+        request.assertMethod(POST)
 
         val basicAuthorization = getBasicAuthorization(request)
 

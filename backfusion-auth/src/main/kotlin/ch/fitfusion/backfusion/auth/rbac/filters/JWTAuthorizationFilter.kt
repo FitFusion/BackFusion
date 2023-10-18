@@ -1,4 +1,4 @@
-package ch.fitfusion.backfusion.app.filters
+package ch.fitfusion.backfusion.auth.rbac.filters
 
 import jakarta.servlet.FilterChain
 import jakarta.servlet.http.HttpServletRequest
@@ -22,7 +22,5 @@ class JWTAuthorizationFilter : OncePerRequestFilter() {
         throw AccessDeniedException("Credentials invalid!")
     }
 
-    override fun shouldNotFilter(request: HttpServletRequest): Boolean {
-        return skipAnonymousUrl(request, this::class)
-    }
+    override fun shouldNotFilter(request: HttpServletRequest) = skipAnonymousUrl(request, this::class)
 }
