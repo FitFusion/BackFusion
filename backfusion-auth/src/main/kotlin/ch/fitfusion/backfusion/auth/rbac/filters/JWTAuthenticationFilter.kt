@@ -1,7 +1,8 @@
 package ch.fitfusion.backfusion.auth.rbac.filters
 
 import ch.fitfusion.backfusion.auth.rbac.FitFusionToken
-import ch.fitfusion.backfusion.auth.rbac.utils.buildToken
+import ch.fitfusion.backfusion.auth.rbac.utils.buildTokens
+import com.google.gson.Gson
 import jakarta.servlet.FilterChain
 import jakarta.servlet.http.HttpServletRequest
 import jakarta.servlet.http.HttpServletResponse
@@ -12,6 +13,8 @@ import org.springframework.security.core.Authentication
 import org.springframework.security.core.GrantedAuthority
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter
+import java.io.BufferedOutputStream
+import java.io.ObjectOutputStream
 import java.nio.charset.StandardCharsets.UTF_8
 import java.util.*
 import java.util.stream.Collectors
@@ -19,6 +22,8 @@ import java.util.stream.Collectors
 class JWTAuthenticationFilter(
     authenticationManager: AuthenticationManager,
 ) : UsernamePasswordAuthenticationFilter(authenticationManager) {
+
+    private val gson = Gson()
 
     override fun attemptAuthentication(
         request: HttpServletRequest,
@@ -35,6 +40,7 @@ class JWTAuthenticationFilter(
         return authenticationManager.authenticate(authRequest)
     }
 
+
     override fun successfulAuthentication(
         request: HttpServletRequest?,
         response: HttpServletResponse?,
@@ -44,13 +50,18 @@ class JWTAuthenticationFilter(
 
         val principal = authResult!!.principal as UserDetails
 
-        val authToken = FitFusionToken(
+        val tokens = FitFusionToken(
             request!!.requestURI,
             principal.username,
             principal.authorities.mapAuthorities()
-        ).buildToken()
+        ).buildTokens()
 
-        response!!.outputStream.write(authToken.toByteArray())
+        response!!.outputStream.use {
+            ObjectOutputStream(BufferedOutputStream(it)).use { oos ->
+                oos.writeObject(gson.toJson(tokens))
+                oos.flush()
+            }
+        }
     }
 
     private fun getBasicAuthorization(

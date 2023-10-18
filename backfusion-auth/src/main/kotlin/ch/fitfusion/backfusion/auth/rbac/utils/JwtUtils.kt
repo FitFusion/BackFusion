@@ -27,8 +27,6 @@ private lateinit var config: JwtConfiguration
 fun FitFusionToken.buildToken(): String {
 
     val roles = mapOf(Pair("roles", this.authorities))
-    val expDate = currentTimePlus(config.expTime)
-
     val algorithm = Keys.hmacShaKeyFor(Base64.getDecoder().decode(config.secret))
 
     return Jwts.builder()
@@ -36,9 +34,30 @@ fun FitFusionToken.buildToken(): String {
         .subject(this.subject)
         .claims(roles)
         .issuedAt(currentTimePlus(0))
-        .expiration(expDate)
+        .expiration(currentTimePlus(config.expTime))
         .signWith(algorithm)
         .compact()
+}
+
+fun FitFusionToken.buildTokens(): Map<String, String> {
+
+    val algorithm = Keys.hmacShaKeyFor(Base64.getDecoder().decode(config.secret))
+
+    val authToken = this.buildToken()
+
+    val refreshToken = Jwts.builder()
+        .issuer(this.issuer)
+        .subject(this.subject)
+        .claim("isRefresh", "true")
+        .issuedAt(currentTimePlus(0))
+        .expiration(currentTimePlus(config.expTime * 2))
+        .signWith(algorithm)
+        .compact()
+
+    return mapOf(
+        Pair("auth-token", authToken),
+        Pair("refresh-token", refreshToken),
+    )
 }
 
 private fun currentTimePlus(seconds: Int): Date {
