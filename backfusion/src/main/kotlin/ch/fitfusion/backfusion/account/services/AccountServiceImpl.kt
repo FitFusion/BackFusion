@@ -3,8 +3,8 @@ package ch.fitfusion.backfusion.account.services
 import ch.fitfusion.backfusion.api.account.dtos.AccountDTO
 import ch.fitfusion.backfusion.api.account.dtos.AccountInDTO
 import ch.fitfusion.backfusion.api.account.dtos.AccountOutDTO
-import ch.fitfusion.backfusion.api.common.dtos.ValidationDTO
 import ch.fitfusion.backfusion.api.account.services.AccountService
+import ch.fitfusion.backfusion.api.common.dtos.ValidationDTO
 import ch.fitfusion.backfusion.api.common.dtos.ValidationResult
 import ch.fitfusion.backfusion.auth.rbac.entities.Account
 import ch.fitfusion.backfusion.auth.rbac.repositories.AccountRepository

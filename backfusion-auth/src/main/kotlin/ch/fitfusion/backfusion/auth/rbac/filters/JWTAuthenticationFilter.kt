@@ -14,7 +14,6 @@ import org.springframework.security.core.GrantedAuthority
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter
 import java.io.BufferedOutputStream
-import java.io.ObjectOutputStream
 import java.nio.charset.StandardCharsets.UTF_8
 import java.util.*
 import java.util.stream.Collectors
@@ -57,9 +56,9 @@ class JWTAuthenticationFilter(
         ).buildTokens()
 
         response!!.outputStream.use {
-            ObjectOutputStream(BufferedOutputStream(it)).use { oos ->
-                oos.writeObject(gson.toJson(tokens))
-                oos.flush()
+            BufferedOutputStream(it).use { bos ->
+                bos.write(gson.toJson(tokens).toByteArray(UTF_8))
+                bos.flush()
             }
         }
     }
