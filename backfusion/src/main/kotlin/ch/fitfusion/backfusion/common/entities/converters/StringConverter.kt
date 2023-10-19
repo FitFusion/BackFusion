@@ -1,4 +1,4 @@
-package ch.fitfusion.backfusion.auth.rbac.entities.converters
+package ch.fitfusion.backfusion.common.entities.converters
 
 import jakarta.persistence.AttributeConverter
 import jakarta.persistence.Converter

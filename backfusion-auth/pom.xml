@@ -14,6 +14,12 @@
 
     <dependencies>
 
+        <!-- Module Dependencies -->
+        <dependency>
+            <groupId>ch.fitfusion.backfusion</groupId>
+            <artifactId>backfusion</artifactId>
+        </dependency>
+
         <!-- Spring-Boot dependencies -->
         <dependency>
             <groupId>org.springframework.boot</groupId>

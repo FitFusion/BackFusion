@@ -1,5 +1,6 @@
 package ch.fitfusion.backfusion.account.services
 
+import ch.fitfusion.backfusion.account.mappers.AccountMapper
 import ch.fitfusion.backfusion.api.account.dtos.AccountDTO
 import ch.fitfusion.backfusion.api.account.dtos.AccountInDTO
 import ch.fitfusion.backfusion.api.account.dtos.AccountOutDTO
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service
 @Service
 class AccountServiceImpl(
     private val accountRepository: AccountRepository,
+    private val accountMapper: AccountMapper,
 ) : AccountService {
 
     override fun register(accountIn: AccountInDTO): AccountOutDTO {
@@ -25,6 +27,14 @@ class AccountServiceImpl(
         val save = accountRepository.save(account)
 
         return AccountOutDTO(AccountDTO(save.username, save.email), ValidationResult.withError("Error"))
+    }
+
+    override fun getAccount(id: Long): AccountDTO? {
+
+        val account = accountRepository.findById(id)
+            .orElse(null) ?: return null
+
+        return accountMapper.toDTO(account)
     }
 
     override fun validateEmail(email: String): ValidationDTO {
