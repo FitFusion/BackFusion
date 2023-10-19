@@ -11,6 +11,8 @@ interface AccountService {
 
     fun getAccount(id: Long): AccountDTO?
 
+    fun getAccount(): AccountDTO
+
     fun validateEmail(email: String): ValidationDTO
 
     fun updateAccount(account: AccountDTO): AccountOutDTO
