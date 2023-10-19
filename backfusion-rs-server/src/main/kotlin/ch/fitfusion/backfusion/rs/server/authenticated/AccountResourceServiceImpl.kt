@@ -8,7 +8,7 @@ import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
-class AccountResourceServiceImpl(
+open class AccountResourceServiceImpl(
     private val accountService: AccountService
 ) : AccountResourceService {
 

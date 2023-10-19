@@ -7,6 +7,7 @@ import jakarta.annotation.PostConstruct
 import org.springframework.boot.context.properties.ConfigurationProperties
 import org.springframework.context.annotation.Configuration
 import java.util.*
+import javax.crypto.SecretKey
 
 @Configuration
 @ConfigurationProperties(prefix = "jwt")
@@ -19,15 +20,17 @@ open class JwtConfiguration {
     @PostConstruct
     private fun init() {
         config = this
+        algorithm = Keys.hmacShaKeyFor(Base64.getDecoder().decode(config.secret))
     }
 }
 
 private lateinit var config: JwtConfiguration
 
+private lateinit var algorithm: SecretKey
+
 fun FitFusionToken.buildToken(): String {
 
     val roles = mapOf(Pair("roles", this.authorities))
-    val algorithm = Keys.hmacShaKeyFor(Base64.getDecoder().decode(config.secret))
 
     return Jwts.builder()
         .issuer(this.issuer)
@@ -41,8 +44,6 @@ fun FitFusionToken.buildToken(): String {
 
 fun FitFusionToken.buildTokens(): Map<String, String> {
 
-    val algorithm = Keys.hmacShaKeyFor(Base64.getDecoder().decode(config.secret))
-
     val authToken = this.buildToken()
 
     val refreshToken = Jwts.builder()
@@ -55,8 +56,35 @@ fun FitFusionToken.buildTokens(): Map<String, String> {
         .compact()
 
     return mapOf(
-        Pair("auth-token", authToken),
+        Pair("access-token", authToken),
         Pair("refresh-token", refreshToken),
+    )
+}
+
+fun validateToken(token: String): Boolean {
+
+    val parsedToken = Jwts.parser()
+        .verifyWith(algorithm)
+        .build()
+        .parse(token)
+
+    return parsedToken != null
+}
+
+fun decodeToken(token: String): FitFusionToken {
+
+    val decodedToken = Jwts.parser()
+        .verifyWith(algorithm)
+        .build()
+        .parseSignedClaims(token)
+        .payload
+
+    val roles = decodedToken["roles"] as List<*>
+
+    return FitFusionToken(
+        decodedToken.issuer,
+        decodedToken.subject,
+        roles.map { it.toString() }.toSet()
     )
 }
 
