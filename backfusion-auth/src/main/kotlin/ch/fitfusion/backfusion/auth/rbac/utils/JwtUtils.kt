@@ -7,6 +7,7 @@ import jakarta.annotation.PostConstruct
 import org.springframework.boot.context.properties.ConfigurationProperties
 import org.springframework.context.annotation.Configuration
 import java.util.*
+import java.util.Calendar.SECOND
 import javax.crypto.SecretKey
 
 @Configuration
@@ -15,6 +16,7 @@ open class JwtConfiguration {
 
     var expTime: Int = -1
 
+    @SuppressWarnings("WeakerAccess")
     var secret: String = ""
 
     @PostConstruct
@@ -49,7 +51,7 @@ fun FitFusionToken.buildTokens(): Map<String, String> {
     val refreshToken = Jwts.builder()
         .issuer(this.issuer)
         .subject(this.subject)
-        .claim("isRefresh", "true")
+        .claim("isRefresh", true)
         .issuedAt(currentTimePlus(0))
         .expiration(currentTimePlus(config.expTime * 2))
         .signWith(algorithm)
@@ -90,8 +92,6 @@ fun decodeToken(token: String): FitFusionToken {
 
 private fun currentTimePlus(seconds: Int): Date {
     val calendar = Calendar.getInstance()
-    calendar.add(Calendar.SECOND, seconds)
+    calendar.add(SECOND, seconds)
     return calendar.time
 }
-
-
