@@ -1,11 +1,6 @@
 spring:
-  datasource:
-    driver-class-name: ""
-    username: postgres
-    password: admin
   jpa:
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
-    hibernate:
-      ddl-auto: none
+    defer-datasource-initialization: true
+server:
+  error:
+    include-message: always

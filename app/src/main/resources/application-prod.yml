@@ -1,3 +1,20 @@
 spring:
+profiles:
+  active: prod
+# DB config
   datasource:
     url: "jdbc:localhost:5432/backfusion"
+    username: postgres
+    password: postgres
+# JPA config
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQL81Dialect
+    hibernate:
+      ddl-auto: none
+    defer-datasource-initialization: true
+# JWT config
+jwt:
+  secret: "G/8D+2t9L87gOcQhKMvHmD1z6LJ2uvK5l5y2wIyq4gQ4JbQ87m2FkNpxn9wS2PnVxWPyL8m5rZFuC33M+sjO9+g=="
+  exp-time: 300 # 5 * 60 => 5min
