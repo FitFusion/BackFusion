@@ -1,6 +1,7 @@
 package ch.fitfusion.backfusion.auth.rbac.utils
 
 import ch.fitfusion.backfusion.auth.rbac.FitFusionToken
+import ch.fitfusion.backfusion.auth.rbac.FitFusionTokenOutDTO
 import io.jsonwebtoken.Jwts
 import io.jsonwebtoken.security.Keys
 import jakarta.annotation.PostConstruct
@@ -30,7 +31,7 @@ private lateinit var config: JwtConfiguration
 
 private lateinit var algorithm: SecretKey
 
-fun FitFusionToken.buildToken(): String {
+fun FitFusionToken.buildAccessToken(): String {
 
     val roles = mapOf(Pair("roles", this.authorities))
 
@@ -44,9 +45,9 @@ fun FitFusionToken.buildToken(): String {
         .compact()
 }
 
-fun FitFusionToken.buildTokens(): Map<String, String> {
+fun FitFusionToken.buildTokens(): FitFusionTokenOutDTO {
 
-    val authToken = this.buildToken()
+    val accessToken = this.buildAccessToken()
 
     val refreshToken = Jwts.builder()
         .issuer(this.issuer)
@@ -57,9 +58,9 @@ fun FitFusionToken.buildTokens(): Map<String, String> {
         .signWith(algorithm)
         .compact()
 
-    return mapOf(
-        Pair("access-token", authToken),
-        Pair("refresh-token", refreshToken),
+    return FitFusionTokenOutDTO(
+        accessToken,
+        refreshToken
     )
 }
 
