@@ -35,4 +35,8 @@ open class WorkoutResourceServiceImpl(
     override fun getAllWorkoutsForAccount(accountId: Long): ResponseEntity<List<WorkoutDTO>> {
         return ResponseEntity.ok(workoutService.getAllWorkoutsForAccount(accountId))
     }
+
+    override fun getAllWorkoutsForAccount(): ResponseEntity<List<WorkoutDTO>> {
+        return ResponseEntity.ok(workoutService.getAllWorkoutsForAccount())
+    }
 }

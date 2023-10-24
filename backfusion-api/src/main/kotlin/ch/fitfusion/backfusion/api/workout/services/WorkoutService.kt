@@ -16,4 +16,6 @@ interface WorkoutService {
     fun deleteWorkout(id: Long): ValidationResult
 
     fun getAllWorkoutsForAccount(accountId: Long): List<WorkoutDTO>
+
+    fun getAllWorkoutsForAccount(): List<WorkoutDTO>
 }

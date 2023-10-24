@@ -2,6 +2,7 @@ package ch.fitfusion.backfusion.rs.api.authenticated
 
 import ch.fitfusion.backfusion.api.common.dtos.ValidationResult
 import ch.fitfusion.backfusion.api.workout.dtos.WorkoutDTO
+import ch.fitfusion.backfusion.auth.rbac.annotations.AccessibleByAdmin
 import ch.fitfusion.backfusion.auth.rbac.annotations.AccessibleByUser
 import io.swagger.v3.oas.annotations.tags.Tag
 import org.springframework.http.ResponseEntity
@@ -31,7 +32,11 @@ interface WorkoutResourceService {
     @AccessibleByUser
     fun deleteWorkout(@PathVariable id: Long): ResponseEntity<ValidationResult>
 
-    @GetMapping("/{account-id}")
-    @AccessibleByUser
+    @GetMapping("/for-account/{account-id}")
+    @AccessibleByAdmin
     fun getAllWorkoutsForAccount(@PathVariable("account-id") accountId: Long): ResponseEntity<List<WorkoutDTO>>
+
+    @GetMapping("/for-account")
+    @AccessibleByUser
+    fun getAllWorkoutsForAccount(): ResponseEntity<List<WorkoutDTO>>
 }
