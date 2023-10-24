@@ -3,6 +3,9 @@ package ch.fitfusion.backfusion.workout.services
 import ch.fitfusion.backfusion.api.common.dtos.ValidationResult
 import ch.fitfusion.backfusion.api.workout.dtos.WorkoutDTO
 import ch.fitfusion.backfusion.api.workout.services.WorkoutService
+import ch.fitfusion.backfusion.common.util.AccountUtil
+import ch.fitfusion.backfusion.workout.mappers.ExerciseMapper
+import ch.fitfusion.backfusion.workout.mappers.WorkoutMapper
 import ch.fitfusion.backfusion.workout.repositories.WorkoutRepository
 import org.springframework.stereotype.Service
 
@@ -10,12 +13,16 @@ import org.springframework.stereotype.Service
 class WorkoutServiceImpl(
     private val workoutRepository: WorkoutRepository,
     private val exerciseRepository: WorkoutRepository,
-//    private val workoutMapper: WorkoutMapper,
-//    private val exerciseMapper: WorkoutMapper,
+    private val workoutMapper: WorkoutMapper,
+    private val exerciseMapper: ExerciseMapper,
+    private val accountUtil: AccountUtil,
 ) : WorkoutService {
 
     override fun createWorkout(workoutDTO: WorkoutDTO): WorkoutDTO {
-        TODO("Not yet implemented")
+
+        val savedEntity = workoutRepository.save(workoutMapper.toEntity(workoutDTO))
+
+        return workoutMapper.toDTO(savedEntity)
     }
 
     override fun validateWorkout(workoutDTO: WorkoutDTO): ValidationResult {
@@ -35,6 +42,9 @@ class WorkoutServiceImpl(
     }
 
     override fun getAllWorkoutsForAccount(accountId: Long): List<WorkoutDTO> {
-        TODO("Not yet implemented")
+
+        val workouts = accountUtil.getAccountFromContext().workouts
+
+        return workouts.map { workoutMapper.toDTO(it) }
     }
 }

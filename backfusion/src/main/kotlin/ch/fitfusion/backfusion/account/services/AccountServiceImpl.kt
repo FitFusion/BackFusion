@@ -9,15 +9,14 @@ import ch.fitfusion.backfusion.api.common.dtos.ValidationDTO
 import ch.fitfusion.backfusion.api.common.dtos.ValidationResult
 import ch.fitfusion.backfusion.auth.rbac.entities.Account
 import ch.fitfusion.backfusion.auth.rbac.repositories.AccountRepository
-import org.springframework.security.core.context.SecurityContextHolder
-import org.springframework.security.core.userdetails.UserDetails
+import ch.fitfusion.backfusion.common.util.AccountUtil
 import org.springframework.stereotype.Service
-import java.lang.NullPointerException
 
 @Service
 class AccountServiceImpl(
     private val accountRepository: AccountRepository,
     private val accountMapper: AccountMapper,
+    private val accountUtil: AccountUtil,
 ) : AccountService {
 
     override fun register(accountIn: AccountInDTO): AccountOutDTO {
@@ -40,15 +39,7 @@ class AccountServiceImpl(
         return accountMapper.toDTO(account)
     }
 
-    override fun getAccount(): AccountDTO {
-
-        val userDetails = SecurityContextHolder.getContext().authentication.principal as UserDetails
-
-        val account = accountRepository.findByUsername(userDetails.username)
-            .orElseThrow { NullPointerException() } // This shouldn't happen!
-
-        return accountMapper.toDTO(account)
-    }
+    override fun getAccount(): AccountDTO = accountMapper.toDTO(accountUtil.getAccountFromContext())
 
     override fun validateEmail(email: String): ValidationDTO {
         return ValidationDTO(ValidationResult.ok())
