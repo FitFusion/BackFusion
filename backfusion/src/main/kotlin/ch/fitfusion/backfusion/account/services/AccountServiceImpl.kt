@@ -9,7 +9,9 @@ import ch.fitfusion.backfusion.api.common.dtos.ValidationDTO
 import ch.fitfusion.backfusion.api.common.dtos.ValidationResult
 import ch.fitfusion.backfusion.auth.rbac.entities.Account
 import ch.fitfusion.backfusion.auth.rbac.repositories.AccountRepository
-import ch.fitfusion.backfusion.common.util.AccountUtil
+import ch.fitfusion.backfusion.account.util.AccountUtil
+import org.springframework.security.core.context.SecurityContextHolder
+import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.stereotype.Service
 
 @Service
@@ -39,7 +41,7 @@ class AccountServiceImpl(
         return accountMapper.toDTO(account)
     }
 
-    override fun getAccount(): AccountDTO = accountMapper.toDTO(accountUtil.getAccountFromContext())
+    override fun getAccount() = accountMapper.toDTO(accountUtil.getAccountFromContext())
 
     override fun validateEmail(email: String): ValidationDTO {
         return ValidationDTO(ValidationResult.ok())

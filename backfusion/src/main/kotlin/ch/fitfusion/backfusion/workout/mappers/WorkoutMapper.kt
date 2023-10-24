@@ -20,7 +20,7 @@ class WorkoutMapperImpl(
 
     override fun toDTO(entity: Workout): WorkoutDTO {
         return WorkoutDTO(
-            entity.id ?: -1,
+            entity.id,
             entity.name,
             entity.description,
             entity.totalDuration,
@@ -33,7 +33,7 @@ class WorkoutMapperImpl(
 
         val entity = Workout()
 
-        entity.id = dto.id ?: -1
+        entity.id = dto.id
         entity.name = dto.name
         entity.description = dto.description
         entity.totalDuration = dto.totalDuration
