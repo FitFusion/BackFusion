@@ -9,6 +9,10 @@ interface AccountService {
 
     fun register(accountIn: AccountInDTO): AccountOutDTO
 
+    fun getAccount(id: Long): AccountDTO?
+
+    fun getAccount(): AccountDTO
+
     fun validateEmail(email: String): ValidationDTO
 
     fun updateAccount(account: AccountDTO): AccountOutDTO

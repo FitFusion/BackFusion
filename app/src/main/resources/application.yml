@@ -4,3 +4,4 @@ spring:
 server:
   error:
     include-message: always
+  address: 0.0.0.0

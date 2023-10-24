@@ -17,3 +17,8 @@ data class FitFusionToken(
         this.authorities = grantedAuthorities.map { it.authority }.toSet()
     }
 }
+
+class FitFusionTokenOutDTO(
+    val accessToken: String = "",
+    val refreshToken: String = "",
+)

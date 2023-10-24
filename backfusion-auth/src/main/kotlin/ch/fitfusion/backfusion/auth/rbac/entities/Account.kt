@@ -1,6 +1,7 @@
 package ch.fitfusion.backfusion.auth.rbac.entities
 
 import ch.fitfusion.backfusion.auth.rbac.entities.listeners.AccountListener
+import ch.fitfusion.backfusion.workout.entities.Workout
 import jakarta.persistence.*
 import java.util.*
 
@@ -39,5 +40,12 @@ class Account {
         joinColumns = [JoinColumn(name = "account_id")],
         inverseJoinColumns = [JoinColumn(name = "authority_id")]
     )
-    val authorities: Set<Authority> = HashSet()
+    var authorities: Set<Authority> = HashSet()
+
+    @OneToMany(
+        mappedBy = "account",
+        cascade = [CascadeType.ALL],
+        orphanRemoval = true
+    )
+    var workouts: List<Workout> = mutableListOf()
 }

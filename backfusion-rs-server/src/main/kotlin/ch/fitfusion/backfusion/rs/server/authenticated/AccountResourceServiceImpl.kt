@@ -15,4 +15,12 @@ open class AccountResourceServiceImpl(
     override fun updateAccount(account: AccountDTO): ResponseEntity<AccountOutDTO> {
         return ResponseEntity.ok(accountService.updateAccount(account))
     }
+
+    override fun getAccount(id: Long): ResponseEntity<AccountDTO> {
+        return ResponseEntity.ok(accountService.getAccount(id))
+    }
+
+    override fun getAccount(): ResponseEntity<AccountDTO> {
+        return ResponseEntity.ok(accountService.getAccount())
+    }
 }
