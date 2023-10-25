@@ -1,14 +1,15 @@
-package ch.fitfusion.backfusion.account.services.validation.types
+package ch.fitfusion.backfusion.common.validation.types
 
 import ch.fitfusion.backfusion.api.validation.ValidationType
 import ch.fitfusion.backfusion.api.validation.ValidationType.ERROR
 import ch.fitfusion.backfusion.api.validation.types.ValidationReason
 
-enum class AccountValidationReason(
+enum class CommonValidationReason(
     private val type: ValidationType
 ) : ValidationReason {
 
-    EMAIL_INVALID(ERROR);
+    MANDATORY(ERROR),
+    VALUE_TOO_LONG(ERROR);
 
     override fun getReason() = "$type.${name.lowercase()}"
 }

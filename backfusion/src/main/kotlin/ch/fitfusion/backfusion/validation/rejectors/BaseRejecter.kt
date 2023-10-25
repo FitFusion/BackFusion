@@ -5,7 +5,7 @@ import ch.fitfusion.backfusion.api.validation.collectors.ResultCollector
 
 open class BaseRejecter<T>(
     protected val obj: T?,
-    private var pass: Pass,
+    protected var pass: Pass,
 ) {
 
     fun ifNull(): ResultCollector {

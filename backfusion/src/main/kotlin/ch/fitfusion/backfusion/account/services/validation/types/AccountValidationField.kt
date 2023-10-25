@@ -2,8 +2,17 @@ package ch.fitfusion.backfusion.account.services.validation.types
 
 import ch.fitfusion.backfusion.api.validation.types.ValidationField
 
-enum class AccountValidationField : ValidationField {
-    EMAIL,
-    USERNAME,
-    PASSWORD;
+private const val typeCode = "error.account"
+
+enum class AccountValidationField(
+    private val code: String
+) : ValidationField {
+
+    EMAIL("email"),
+    USERNAME("username"),
+    PASSWORD("password");
+
+    override fun name() = code
+
+    override fun getCode() = "$typeCode.$code"
 }

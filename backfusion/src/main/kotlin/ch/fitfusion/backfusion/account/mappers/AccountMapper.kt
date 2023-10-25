@@ -13,6 +13,8 @@ interface AccountMapper {
     fun toEntity(accountDTO: AccountDTO): Account
 
     fun toEntity(accountDTO: AccountInDTO): Account
+
+    fun updateEntity(account: Account, accountDTO: AccountInDTO)
 }
 
 @Component
@@ -48,4 +50,9 @@ class AccountMapperImpl : AccountMapper {
         return account
     }
 
+    override fun updateEntity(account: Account, accountDTO: AccountInDTO) {
+        account.email = accountDTO.email!!
+        account.username = accountDTO.username!!
+        account.password = accountDTO.password!!
+    }
 }

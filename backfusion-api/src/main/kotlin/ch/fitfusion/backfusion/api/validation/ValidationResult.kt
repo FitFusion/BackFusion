@@ -35,4 +35,13 @@ class ValidationResult {
         infos.add(info)
     }
 
+    fun isOk(): Boolean {
+        return errors.isEmpty()
+                && warnings.isEmpty()
+    }
+
+    fun isNotOk(): Boolean {
+        return !isOk()
+    }
+
 }

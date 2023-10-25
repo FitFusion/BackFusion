@@ -1,6 +1,7 @@
 package ch.fitfusion.backfusion.rs.server.authenticated
 
 import ch.fitfusion.backfusion.api.account.dtos.AccountDTO
+import ch.fitfusion.backfusion.api.account.dtos.AccountInDTO
 import ch.fitfusion.backfusion.api.account.dtos.AccountOutDTO
 import ch.fitfusion.backfusion.api.account.services.AccountService
 import ch.fitfusion.backfusion.rs.api.authenticated.AccountResourceService
@@ -12,8 +13,8 @@ open class AccountResourceServiceImpl(
     private val accountService: AccountService
 ) : AccountResourceService {
 
-    override fun updateAccount(account: AccountDTO): ResponseEntity<AccountOutDTO> {
-        return ResponseEntity.ok(accountService.updateAccount(account))
+    override fun updateAccount(accountIn: AccountInDTO): ResponseEntity<AccountOutDTO> {
+        return ResponseEntity.ok(accountService.updateAccount(accountIn))
     }
 
     override fun getAccount(id: Long): ResponseEntity<AccountDTO> {
