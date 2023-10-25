@@ -1,6 +1,6 @@
 package ch.fitfusion.backfusion.api.workout.services
 
-import ch.fitfusion.backfusion.api.common.dtos.ValidationResult
+import ch.fitfusion.backfusion.api.validation.ValidationResult
 import ch.fitfusion.backfusion.api.workout.dtos.WorkoutDTO
 
 interface WorkoutService {
