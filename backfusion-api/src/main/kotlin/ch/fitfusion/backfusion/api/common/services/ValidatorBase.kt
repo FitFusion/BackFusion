@@ -1,8 +1,7 @@
 package ch.fitfusion.backfusion.api.common.services
 
-import ch.fitfusion.backfusion.api.common.dtos.ValidationResult
+import ch.fitfusion.backfusion.api.validation.ValidationResult
 
-interface Validator<DTO> {
-
+interface ValidatorBase<DTO> {
     fun validate(dto: DTO): ValidationResult
 }

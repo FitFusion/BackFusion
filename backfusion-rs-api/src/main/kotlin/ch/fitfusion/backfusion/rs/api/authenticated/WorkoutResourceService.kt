@@ -1,6 +1,6 @@
 package ch.fitfusion.backfusion.rs.api.authenticated
 
-import ch.fitfusion.backfusion.api.common.dtos.ValidationResult
+import ch.fitfusion.backfusion.api.validation.ValidationResult
 import ch.fitfusion.backfusion.api.workout.dtos.WorkoutDTO
 import ch.fitfusion.backfusion.auth.rbac.annotations.AccessibleByAdmin
 import ch.fitfusion.backfusion.auth.rbac.annotations.AccessibleByUser

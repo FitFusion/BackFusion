@@ -1,6 +1,6 @@
 package ch.fitfusion.backfusion.workout.services
 
-import ch.fitfusion.backfusion.api.common.dtos.ValidationResult
+import ch.fitfusion.backfusion.api.validation.ValidationResult
 import ch.fitfusion.backfusion.api.workout.dtos.WorkoutDTO
 import ch.fitfusion.backfusion.api.workout.services.WorkoutService
 import ch.fitfusion.backfusion.auth.rbac.repositories.AccountRepository

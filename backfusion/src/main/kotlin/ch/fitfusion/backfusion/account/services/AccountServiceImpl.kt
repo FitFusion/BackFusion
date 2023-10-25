@@ -1,17 +1,14 @@
 package ch.fitfusion.backfusion.account.services
 
 import ch.fitfusion.backfusion.account.mappers.AccountMapper
+import ch.fitfusion.backfusion.account.util.AccountUtil
 import ch.fitfusion.backfusion.api.account.dtos.AccountDTO
 import ch.fitfusion.backfusion.api.account.dtos.AccountInDTO
 import ch.fitfusion.backfusion.api.account.dtos.AccountOutDTO
 import ch.fitfusion.backfusion.api.account.services.AccountService
 import ch.fitfusion.backfusion.api.common.dtos.ValidationDTO
-import ch.fitfusion.backfusion.api.common.dtos.ValidationResult
-import ch.fitfusion.backfusion.auth.rbac.entities.Account
+import ch.fitfusion.backfusion.api.validation.ValidationResult
 import ch.fitfusion.backfusion.auth.rbac.repositories.AccountRepository
-import ch.fitfusion.backfusion.account.util.AccountUtil
-import org.springframework.security.core.context.SecurityContextHolder
-import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.stereotype.Service
 
 @Service
@@ -23,14 +20,9 @@ class AccountServiceImpl(
 
     override fun register(accountIn: AccountInDTO): AccountOutDTO {
 
-        val account = Account()
-        account.email = accountIn.email
-        account.password = accountIn.password
-        account.username = accountIn.username
+        val save = accountRepository.save(accountMapper.toEntity(accountIn))
 
-        val save = accountRepository.save(account)
-
-        return AccountOutDTO(AccountDTO(save.username, save.email), ValidationResult.withError("Error"))
+        return AccountOutDTO(AccountDTO(save.username, save.email), ValidationResult.ok())
     }
 
     override fun getAccount(id: Long): AccountDTO? {
