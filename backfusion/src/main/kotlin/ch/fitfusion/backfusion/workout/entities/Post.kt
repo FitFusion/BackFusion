@@ -19,7 +19,9 @@ class Post : BaseEntity() {
     @Column(length = 250)
     var content: String = ""
 
-    var recipe:
+    @ManyToOne
+    @JoinColumn(name = "recipe_id", nullable = false)
+    var recipe : Recipe? = null;
 
     @ManyToOne
     @JoinColumn(name = "account_id", nullable = false)

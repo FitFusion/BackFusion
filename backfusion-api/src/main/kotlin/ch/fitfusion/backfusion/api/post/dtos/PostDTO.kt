@@ -8,7 +8,7 @@ class PostDTO(
     val title: String,
     val content: String?,
     val recipe: RecipeDTO?,
-    val account: AccountDTO,
+    val account: AccountDTO?,
     val creationDate: Date,
     val likes: Long?,
     val comments: List<CommentDTO>,
