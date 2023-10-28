@@ -15,5 +15,5 @@ interface AccountService {
 
     fun validateEmail(email: String): ValidationDTO
 
-    fun updateAccount(account: AccountDTO): AccountOutDTO
+    fun updateAccount(accountIn: AccountInDTO): AccountOutDTO
 }

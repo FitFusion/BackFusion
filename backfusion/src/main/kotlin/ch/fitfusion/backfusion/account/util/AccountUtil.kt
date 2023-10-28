@@ -1,4 +1,4 @@
-package ch.fitfusion.backfusion.common.util
+package ch.fitfusion.backfusion.account.util
 
 import ch.fitfusion.backfusion.auth.rbac.entities.Account
 import ch.fitfusion.backfusion.auth.rbac.repositories.AccountRepository
@@ -11,10 +11,11 @@ class AccountUtil(
     private val repository: AccountRepository,
 ) {
 
-    private fun getUserDetails(): UserDetails = SecurityContextHolder.getContext().authentication as UserDetails
-
     fun getAccountFromContext(): Account {
-        return repository.findByUsername(getUserDetails().username)
+
+        val userDetails = SecurityContextHolder.getContext().authentication.principal as UserDetails
+
+        return repository.findByUsername(userDetails.username)
             .orElseThrow { NullPointerException("An account has to exist when it is in the SecurityContext!") }
     }
 }
