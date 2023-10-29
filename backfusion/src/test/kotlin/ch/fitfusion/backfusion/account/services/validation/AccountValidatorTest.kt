@@ -23,7 +23,7 @@ class AccountValidatorTest {
     }
 
     private fun createValidAccount(): AccountInDTO {
-        return AccountInDTO(
+        return AccountInDTO(-1,
             "username",
             "info@fitfusion.ch",
             "Wow, such a secure password",
@@ -31,7 +31,7 @@ class AccountValidatorTest {
     }
 
     private fun createInvalidAccount(): AccountInDTO {
-        return AccountInDTO(
+        return AccountInDTO(-1,
             null,
             null,
             null,

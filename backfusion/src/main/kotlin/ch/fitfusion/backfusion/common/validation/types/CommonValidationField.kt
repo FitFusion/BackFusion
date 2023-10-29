@@ -12,7 +12,7 @@ enum class CommonValidationField(
     ID( "id"),
     TITLE( "title");
 
-    override fun name() = code
+    override fun fieldName() = code
 
     override fun getCode() = "$typeCode.$code"
 }

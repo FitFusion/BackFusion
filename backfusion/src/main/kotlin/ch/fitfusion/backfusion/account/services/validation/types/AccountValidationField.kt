@@ -12,7 +12,7 @@ enum class AccountValidationField(
     USERNAME("username"),
     PASSWORD("password");
 
-    override fun name() = code
+    override fun fieldName() = code
 
     override fun getCode() = "$typeCode.$code"
 }
