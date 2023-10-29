@@ -4,6 +4,7 @@ import ch.fitfusion.backfusion.api.account.dtos.AccountDTO
 import ch.fitfusion.backfusion.auth.rbac.entities.Account
 import ch.fitfusion.backfusion.auth.rbac.repositories.AccountRepository
 import org.mapstruct.Mapper
+import org.springframework.stereotype.Component
 
 @Mapper(componentModel = "sptring")
 interface AccountMapper {
@@ -12,6 +13,7 @@ interface AccountMapper {
     fun getAccount(dto: AccountDTO): Account
 }
 
+@Component
 class AccountMapperImpl(
     private val repository: AccountRepository
 ) : AccountMapper{

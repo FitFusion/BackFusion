@@ -3,6 +3,7 @@ package ch.fitfusion.backfusion.workout.mappers
 import ch.fitfusion.backfusion.api.post.dtos.PostDTO
 import ch.fitfusion.backfusion.workout.entities.Post
 import org.mapstruct.Mapper
+import org.springframework.stereotype.Component
 
 @Mapper(componentModel = "spring")
 interface PostMapper {
@@ -12,6 +13,7 @@ interface PostMapper {
     fun toEntity(dto: PostDTO): Post
 }
 
+@Component
 class PostMapperImpl(
     private val accountMapper: AccountMapper,
     private val recipeMapper: RecipeMapper,
