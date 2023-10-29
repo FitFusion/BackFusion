@@ -1,4 +1,4 @@
-package ch.fitfucion.backfusion.post.services
+package ch.fitfusion.backfusion.post.services
 
 import ch.fitfusion.backfusion.account.util.AccountUtil
 import ch.fitfusion.backfusion.api.post.dtos.CommentDTO
