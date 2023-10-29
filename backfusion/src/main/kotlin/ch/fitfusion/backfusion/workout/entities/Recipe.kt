@@ -13,7 +13,6 @@ class Recipe : BaseEntity() {
     var id: Long? = null
 
     @OneToMany(
-        mappedBy = "recipe",
         cascade = [CascadeType.ALL],
         orphanRemoval = true
     )
