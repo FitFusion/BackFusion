@@ -4,6 +4,7 @@ import ch.fitfusion.backfusion.api.post.dtos.RecipeDTO
 import ch.fitfusion.backfusion.workout.entities.Ingredient
 import ch.fitfusion.backfusion.workout.entities.Recipe
 import org.mapstruct.Mapper
+import org.springframework.stereotype.Component
 import java.util.Date
 
 @Mapper(componentModel = "spring")
@@ -13,6 +14,7 @@ interface RecipeMapper {
     fun toEntity(dto: RecipeDTO): Recipe
 }
 
+@Component
 class RecipeMapperImpl : RecipeMapper{
     override fun toDTO(entity: Recipe): RecipeDTO {
         return RecipeDTO(entity.id, entity.ingredients.map { it.name })
