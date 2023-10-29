@@ -7,7 +7,9 @@ import ch.fitfusion.backfusion.api.post.services.PostService
 import ch.fitfusion.backfusion.workout.mappers.PostMapper
 import ch.fitfusion.backfusion.workout.repositories.PostRepository
 import ch.fitfusion.backfusion.workout.services.validation.PostValidator
+import org.springframework.stereotype.Service
 
+@Service
 class PostServiceImpl(
     private val validator: PostValidator,
     private val postMapper: PostMapper,

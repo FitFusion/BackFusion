@@ -9,6 +9,5 @@ import java.util.*
 
 @Repository
 interface WorkoutRepository : JpaRepository<Workout, Long> {
-
     fun findByIdAndAccount(id: Long, account: Account): Optional<Workout>
 }
