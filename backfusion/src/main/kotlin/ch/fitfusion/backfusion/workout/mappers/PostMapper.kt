@@ -1,5 +1,6 @@
 package ch.fitfusion.backfusion.workout.mappers
 
+import ch.fitfusion.backfusion.account.mappers.AccountMapper
 import ch.fitfusion.backfusion.api.post.dtos.PostDTO
 import ch.fitfusion.backfusion.workout.entities.Post
 import org.mapstruct.Mapper
