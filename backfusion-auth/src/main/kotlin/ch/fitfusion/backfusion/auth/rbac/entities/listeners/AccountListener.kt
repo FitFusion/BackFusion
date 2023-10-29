@@ -10,13 +10,19 @@ import java.util.*
 @Component
 class AccountListener {
 
+    companion object {
+        private lateinit var encoder: PasswordEncoder
+    }
+
     @Autowired
-    private lateinit var passwordEncoder: PasswordEncoder
+    fun init(passwordEncoder: PasswordEncoder) {
+        encoder = passwordEncoder
+    }
 
     @PrePersist
     fun beforeSave(account: Account) {
         // Encrypt password
-        account.password = passwordEncoder.encode(account.password)
+        account.password = encoder.encode(account.password)
 
         // Set creation date
         account.creationDate = Date()
