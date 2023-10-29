@@ -1,6 +1,7 @@
 package ch.fitfusion.backfusion.auth.rbac.entities.listeners
 
 import ch.fitfusion.backfusion.auth.rbac.entities.Account
+import ch.fitfusion.backfusion.auth.rbac.repositories.AuthorityRepository
 import jakarta.persistence.PrePersist
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.security.crypto.password.PasswordEncoder
@@ -11,20 +12,29 @@ import java.util.*
 class AccountListener {
 
     companion object {
-        private lateinit var encoder: PasswordEncoder
+        private lateinit var passwordEncoder: PasswordEncoder
+        private lateinit var authorityRepository: AuthorityRepository
     }
 
     @Autowired
-    fun init(passwordEncoder: PasswordEncoder) {
-        encoder = passwordEncoder
+    fun init(
+        passwordEncoder: PasswordEncoder,
+        authorityRepository: AuthorityRepository,
+    ) {
+        AccountListener.passwordEncoder = passwordEncoder
+        AccountListener.authorityRepository = authorityRepository
     }
 
     @PrePersist
     fun beforeSave(account: Account) {
-        // Encrypt password
-        account.password = encoder.encode(account.password)
 
         // Set creation date
         account.creationDate = Date()
+
+        // Encrypt password
+        account.password = passwordEncoder.encode(account.password)
+
+        // Add default user role
+        account.authorities = setOf(authorityRepository.getAuthorityByName("ROLE_USER"))
     }
 }

@@ -28,8 +28,8 @@ class AccountMapperImpl(
     override fun toDTO(account: Account): AccountDTO {
 
         return AccountDTO(
-            account.email,
             account.username,
+            account.email,
         )
     }
 
