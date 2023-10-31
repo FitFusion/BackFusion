@@ -6,7 +6,7 @@ import ch.fitfusion.backfusion.workout.entities.Workout
 import org.mapstruct.Mapper
 import org.springframework.stereotype.Component
 
-@Mapper(componentModel = "spring")
+@Mapper
 interface ExerciseMapper {
 
     fun toDTO(entity: Exercise): ExerciseDTO
@@ -18,24 +18,24 @@ interface ExerciseMapper {
     }
 }
 
-@Component
-class ExerciseMapperImpl : ExerciseMapper {
-
-    override fun toDTO(entity: Exercise): ExerciseDTO {
-        return ExerciseDTO(
-            entity.id ?: -1,
-            entity.name,
-            entity.duration,
-        )
-    }
-
-    override fun toEntity(dto: ExerciseDTO): Exercise {
-        val entity = Exercise()
-
-        entity.id = dto.id
-        entity.name = dto.name
-        entity.duration = dto.duration
-
-        return entity
-    }
-}
+//@Component
+//class ExerciseMapperImpl : ExerciseMapper {
+//
+//    override fun toDTO(entity: Exercise): ExerciseDTO {
+//        return ExerciseDTO(
+//            entity.id ?: -1,
+//            entity.name,
+//            entity.duration,
+//        )
+//    }
+//
+//    override fun toEntity(dto: ExerciseDTO): Exercise {
+//        val entity = Exercise()
+//
+//        entity.id = dto.id
+//        entity.name = dto.name
+//        entity.duration = dto.duration
+//
+//        return entity
+//    }
+//}

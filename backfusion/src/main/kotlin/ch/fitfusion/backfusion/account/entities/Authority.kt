@@ -1,4 +1,4 @@
-package ch.fitfusion.backfusion.auth.rbac.entities
+package ch.fitfusion.backfusion.account.entities
 
 import jakarta.persistence.*
 

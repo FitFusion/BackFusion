@@ -11,7 +11,7 @@ import ch.fitfusion.backfusion.api.common.dtos.ValidationDTO
 import ch.fitfusion.backfusion.api.validation.ValidationResult
 import ch.fitfusion.backfusion.api.validation.ValidationResultEntry.Companion.error
 import ch.fitfusion.backfusion.auth.rbac.exceptions.AccountNotFoundException
-import ch.fitfusion.backfusion.auth.rbac.repositories.AccountRepository
+import ch.fitfusion.backfusion.account.repositories.AccountRepository
 import ch.fitfusion.backfusion.common.validation.types.CommonValidationField.ID
 import ch.fitfusion.backfusion.common.validation.types.CommonValidationReason.MANDATORY
 import org.springframework.stereotype.Service

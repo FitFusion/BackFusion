@@ -1,6 +1,6 @@
-package ch.fitfusion.backfusion.auth.rbac.entities
+package ch.fitfusion.backfusion.account.entities
 
-import ch.fitfusion.backfusion.auth.rbac.entities.listeners.AccountListener
+import ch.fitfusion.backfusion.account.entities.listeners.AccountListener
 import ch.fitfusion.backfusion.workout.entities.Workout
 import jakarta.persistence.*
 import java.util.*

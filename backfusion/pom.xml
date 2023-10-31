@@ -20,11 +20,6 @@
             <artifactId>backfusion-api</artifactId>
         </dependency>
 
-        <dependency>
-            <groupId>ch.fitfusion.backfusion</groupId>
-            <artifactId>backfusion-auth</artifactId>
-        </dependency>
-
         <!-- Spring Boot -->
         <dependency>
             <groupId>org.springframework.boot</groupId>

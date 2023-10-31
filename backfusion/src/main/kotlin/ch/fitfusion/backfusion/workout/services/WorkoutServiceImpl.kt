@@ -3,7 +3,7 @@ package ch.fitfusion.backfusion.workout.services
 import ch.fitfusion.backfusion.api.validation.ValidationResult
 import ch.fitfusion.backfusion.api.workout.dtos.WorkoutDTO
 import ch.fitfusion.backfusion.api.workout.services.WorkoutService
-import ch.fitfusion.backfusion.auth.rbac.repositories.AccountRepository
+import ch.fitfusion.backfusion.account.repositories.AccountRepository
 import ch.fitfusion.backfusion.account.util.AccountUtil
 import ch.fitfusion.backfusion.workout.mappers.ExerciseMapper
 import ch.fitfusion.backfusion.workout.mappers.WorkoutMapper

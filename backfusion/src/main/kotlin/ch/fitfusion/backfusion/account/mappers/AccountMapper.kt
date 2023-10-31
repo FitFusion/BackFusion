@@ -2,8 +2,8 @@ package ch.fitfusion.backfusion.account.mappers
 
 import ch.fitfusion.backfusion.api.account.dtos.AccountDTO
 import ch.fitfusion.backfusion.api.account.dtos.AccountInDTO
-import ch.fitfusion.backfusion.auth.rbac.entities.Account
-import ch.fitfusion.backfusion.auth.rbac.repositories.AccountRepository
+import ch.fitfusion.backfusion.account.entities.Account
+import ch.fitfusion.backfusion.account.repositories.AccountRepository
 import org.mapstruct.Mapper
 import org.springframework.stereotype.Component
 

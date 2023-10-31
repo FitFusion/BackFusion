@@ -1,6 +1,6 @@
 package ch.fitfusion.backfusion.workout.entities
 
-import ch.fitfusion.backfusion.auth.rbac.entities.Account
+import ch.fitfusion.backfusion.account.entities.Account
 import ch.fitfusion.backfusion.common.entities.BaseEntity
 import jakarta.persistence.*
 

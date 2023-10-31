@@ -1,7 +1,7 @@
-package ch.fitfusion.backfusion.auth.rbac.entities.listeners
+package ch.fitfusion.backfusion.account.entities.listeners
 
-import ch.fitfusion.backfusion.auth.rbac.entities.Account
-import ch.fitfusion.backfusion.auth.rbac.repositories.AuthorityRepository
+import ch.fitfusion.backfusion.account.entities.Account
+import ch.fitfusion.backfusion.account.repositories.AuthorityRepository
 import jakarta.persistence.PrePersist
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.security.crypto.password.PasswordEncoder
@@ -21,8 +21,8 @@ class AccountListener {
         passwordEncoder: PasswordEncoder,
         authorityRepository: AuthorityRepository,
     ) {
-        AccountListener.passwordEncoder = passwordEncoder
-        AccountListener.authorityRepository = authorityRepository
+        Companion.passwordEncoder = passwordEncoder
+        Companion.authorityRepository = authorityRepository
     }
 
     @PrePersist

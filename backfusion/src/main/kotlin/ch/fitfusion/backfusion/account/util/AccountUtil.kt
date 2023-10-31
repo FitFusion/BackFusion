@@ -1,7 +1,7 @@
 package ch.fitfusion.backfusion.account.util
 
-import ch.fitfusion.backfusion.auth.rbac.entities.Account
-import ch.fitfusion.backfusion.auth.rbac.repositories.AccountRepository
+import ch.fitfusion.backfusion.account.entities.Account
+import ch.fitfusion.backfusion.account.repositories.AccountRepository
 import org.springframework.security.core.context.SecurityContextHolder
 import org.springframework.security.core.userdetails.UserDetails
 import org.springframework.stereotype.Component
