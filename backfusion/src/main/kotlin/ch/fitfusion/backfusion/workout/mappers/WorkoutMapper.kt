@@ -2,45 +2,21 @@ package ch.fitfusion.backfusion.workout.mappers
 
 import ch.fitfusion.backfusion.api.workout.dtos.WorkoutDTO
 import ch.fitfusion.backfusion.workout.entities.Workout
+import org.mapstruct.AfterMapping
 import org.mapstruct.Mapper
-import org.springframework.stereotype.Component
+import org.mapstruct.MappingTarget
 
-@Mapper(componentModel = "spring")
-interface WorkoutMapper {
+@Mapper(componentModel = "spring", uses = [ExerciseMapper::class])
+abstract class WorkoutMapper(
+    protected val exerciseMapper: ExerciseMapper
+) {
 
-    fun toDTO(entity: Workout): WorkoutDTO
+    abstract fun toDTO(entity: Workout): WorkoutDTO
 
-    fun toEntity(dto: WorkoutDTO): Workout
-}
+    abstract fun toEntity(dto: WorkoutDTO): Workout
 
-@Component
-class WorkoutMapperImpl(
-    private val exerciseMapper: ExerciseMapper
-) : WorkoutMapper {
-
-    override fun toDTO(entity: Workout): WorkoutDTO {
-        return WorkoutDTO(
-            entity.id,
-            entity.name,
-            entity.description,
-            entity.totalDuration,
-            entity.isPublic,
-            entity.exercises.map(exerciseMapper::toDTO).toList(),
-        )
-    }
-
-    override fun toEntity(dto: WorkoutDTO): Workout {
-
-        val entity = Workout()
-
-        entity.id = dto.id
-        entity.name = dto.name
-        entity.description = dto.description
-        entity.totalDuration = dto.totalDuration
-        entity.isPublic = dto.isPublic
-        entity.exercises = dto.exercises.map(exerciseMapper::toEntity).toList()
+    @AfterMapping
+    fun addParentEntity(@MappingTarget entity: Workout) {
         entity.exercises.forEach { exerciseMapper.setParentEntity(it, entity) }
-
-        return entity
     }
 }

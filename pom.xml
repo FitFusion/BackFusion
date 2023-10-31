@@ -132,7 +132,6 @@
     <build>
         <pluginManagement>
             <plugins>
-
                 <plugin>
                     <groupId>org.jetbrains.kotlin</groupId>
                     <artifactId>kotlin-maven-plugin</artifactId>
@@ -202,42 +201,6 @@
                     </configuration>
                 </plugin>
 
-<!--                <plugin>-->
-<!--                    <groupId>org.apache.maven.plugins</groupId>-->
-<!--                    <artifactId>maven-compiler-plugin</artifactId>-->
-<!--                    <version>3.8.1</version>-->
-
-<!--                    <configuration>-->
-<!--                        <proc>none</proc>-->
-<!--                        <source>${kotlin.compiler.jvmTarget}</source>-->
-<!--                        <target>${kotlin.compiler.jvmTarget}</target>-->
-<!--                    </configuration>-->
-
-<!--                    <executions>-->
-<!--                        <execution>-->
-<!--                            <id>default-compile</id>-->
-<!--                            <phase>none</phase>-->
-<!--                        </execution>-->
-<!--                        <execution>-->
-<!--                            <id>default-testCompile</id>-->
-<!--                            <phase>none</phase>-->
-<!--                        </execution>-->
-<!--                        <execution>-->
-<!--                            <id>java-compile</id>-->
-<!--                            <phase>compile</phase>-->
-<!--                            <goals>-->
-<!--                                <goal>compile</goal>-->
-<!--                            </goals>-->
-<!--                        </execution>-->
-<!--                        <execution>-->
-<!--                            <id>java-test-compile</id>-->
-<!--                            <phase>test-compile</phase>-->
-<!--                            <goals>-->
-<!--                                <goal>testCompile</goal>-->
-<!--                            </goals>-->
-<!--                        </execution>-->
-<!--                    </executions>-->
-<!--                </plugin>-->
             </plugins>
         </pluginManagement>
     </build>

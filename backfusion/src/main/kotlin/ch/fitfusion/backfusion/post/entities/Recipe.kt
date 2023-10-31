@@ -1,4 +1,4 @@
-package ch.fitfusion.backfusion.workout.entities
+package ch.fitfusion.backfusion.post.entities
 
 import ch.fitfusion.backfusion.common.entities.BaseEntity
 import jakarta.persistence.*
@@ -12,9 +12,6 @@ class Recipe : BaseEntity() {
     @Column(name = "id", nullable = false)
     var id: Long? = null
 
-    @OneToMany(
-        cascade = [CascadeType.ALL],
-        orphanRemoval = true
-    )
-    var ingredients: List<Ingredient> = mutableListOf()
+    @ElementCollection
+    var ingredients: List<String> = mutableListOf()
 }

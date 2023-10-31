@@ -1,4 +1,4 @@
-package ch.fitfusion.backfusion.workout.entities
+package ch.fitfusion.backfusion.post.entities
 
 import ch.fitfusion.backfusion.account.entities.Account
 import ch.fitfusion.backfusion.common.entities.BaseEntity

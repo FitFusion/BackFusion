@@ -1,6 +1,6 @@
-package ch.fitfusion.backfusion.workout.repositories
+package ch.fitfusion.backfusion.post.repositories
 
-import ch.fitfusion.backfusion.workout.entities.Post
+import ch.fitfusion.backfusion.post.entities.Post
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
 
