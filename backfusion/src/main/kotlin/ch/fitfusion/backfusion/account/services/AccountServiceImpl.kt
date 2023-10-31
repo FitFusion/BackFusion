@@ -1,6 +1,8 @@
 package ch.fitfusion.backfusion.account.services
 
+import ch.fitfusion.backfusion.account.exceptions.AccountNotFoundException
 import ch.fitfusion.backfusion.account.mappers.AccountMapper
+import ch.fitfusion.backfusion.account.repositories.AccountRepository
 import ch.fitfusion.backfusion.account.services.validation.AccountValidator
 import ch.fitfusion.backfusion.account.util.AccountUtil
 import ch.fitfusion.backfusion.api.account.dtos.AccountDTO
@@ -10,8 +12,6 @@ import ch.fitfusion.backfusion.api.account.services.AccountService
 import ch.fitfusion.backfusion.api.common.dtos.ValidationDTO
 import ch.fitfusion.backfusion.api.validation.ValidationResult
 import ch.fitfusion.backfusion.api.validation.ValidationResultEntry.Companion.error
-import ch.fitfusion.backfusion.auth.rbac.exceptions.AccountNotFoundException
-import ch.fitfusion.backfusion.account.repositories.AccountRepository
 import ch.fitfusion.backfusion.common.validation.types.CommonValidationField.ID
 import ch.fitfusion.backfusion.common.validation.types.CommonValidationReason.MANDATORY
 import org.springframework.stereotype.Service

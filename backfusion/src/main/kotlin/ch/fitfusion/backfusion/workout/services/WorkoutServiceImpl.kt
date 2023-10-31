@@ -9,9 +9,8 @@ import ch.fitfusion.backfusion.workout.mappers.ExerciseMapper
 import ch.fitfusion.backfusion.workout.mappers.WorkoutMapper
 import ch.fitfusion.backfusion.workout.repositories.WorkoutRepository
 import ch.fitfusion.backfusion.workout.services.validation.WorkoutValidator
-import org.springframework.security.access.AccessDeniedException
 import org.springframework.stereotype.Service
-import java.lang.RuntimeException
+import org.springframework.security.access.AccessDeniedException
 
 @Service
 class WorkoutServiceImpl(
