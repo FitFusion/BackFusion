@@ -15,6 +15,7 @@ import ch.fitfusion.backfusion.api.validation.ValidationResultEntry.Companion.er
 import ch.fitfusion.backfusion.common.validation.types.CommonValidationField.ID
 import ch.fitfusion.backfusion.common.validation.types.CommonValidationReason.MANDATORY
 import org.springframework.stereotype.Service
+import org.springframework.security.access.AccessDeniedException
 
 @Service
 class AccountServiceImpl(
@@ -30,6 +31,10 @@ class AccountServiceImpl(
 
         if (result.isNotOk()) {
             return AccountOutDTO(null, result)
+        }
+
+        if (accountRepository.findByUsernameOrEmail(accountIn.username!!, accountIn.email!!).isPresent) {
+            throw AccessDeniedException("Account already exists")
         }
 
         val save = accountRepository.save(accountMapper.toEntity(accountIn))

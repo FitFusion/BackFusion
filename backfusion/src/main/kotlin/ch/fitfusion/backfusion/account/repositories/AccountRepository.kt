@@ -10,5 +10,7 @@ interface AccountRepository : JpaRepository<Account, Long> {
 
     fun findByUsernameAndPassword(username: String, password: String): Optional<Account>
 
+    fun findByUsernameOrEmail(username: String, email: String): Optional<Account>
+
     fun findByUsername(username: String): Optional<Account>
 }
