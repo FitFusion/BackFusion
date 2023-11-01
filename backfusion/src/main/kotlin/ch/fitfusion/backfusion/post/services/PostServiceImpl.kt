@@ -4,9 +4,9 @@ import ch.fitfusion.backfusion.account.util.AccountUtil
 import ch.fitfusion.backfusion.api.post.dtos.CommentDTO
 import ch.fitfusion.backfusion.api.post.dtos.PostDTO
 import ch.fitfusion.backfusion.api.post.services.PostService
-import ch.fitfusion.backfusion.workout.mappers.PostMapper
-import ch.fitfusion.backfusion.workout.repositories.PostRepository
-import ch.fitfusion.backfusion.workout.services.validation.PostValidator
+import ch.fitfusion.backfusion.post.mappers.PostMapper
+import ch.fitfusion.backfusion.post.repositories.PostRepository
+import ch.fitfusion.backfusion.post.services.validation.PostValidator
 import org.springframework.stereotype.Service
 
 @Service

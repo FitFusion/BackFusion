@@ -1,4 +1,4 @@
-package ch.fitfusion.backfusion.workout.services.validation
+package ch.fitfusion.backfusion.post.services.validation
 
 import ch.fitfusion.backfusion.api.common.services.ValidatorBase
 import ch.fitfusion.backfusion.api.post.dtos.PostDTO

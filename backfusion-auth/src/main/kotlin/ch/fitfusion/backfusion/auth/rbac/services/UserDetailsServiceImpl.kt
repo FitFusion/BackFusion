@@ -1,6 +1,6 @@
 package ch.fitfusion.backfusion.auth.rbac.services
 
-import ch.fitfusion.backfusion.auth.rbac.repositories.AccountRepository
+import ch.fitfusion.backfusion.account.repositories.AccountRepository
 import org.springframework.security.access.AccessDeniedException
 import org.springframework.security.core.GrantedAuthority
 import org.springframework.security.core.userdetails.User

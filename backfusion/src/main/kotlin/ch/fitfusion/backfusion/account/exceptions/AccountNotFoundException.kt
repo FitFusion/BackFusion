@@ -1,4 +1,4 @@
-package ch.fitfusion.backfusion.auth.rbac.exceptions
+package ch.fitfusion.backfusion.account.exceptions
 
 import org.springframework.http.HttpStatus.NOT_FOUND
 import org.springframework.web.server.ResponseStatusException

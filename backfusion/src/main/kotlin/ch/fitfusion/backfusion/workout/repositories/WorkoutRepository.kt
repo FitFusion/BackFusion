@@ -1,6 +1,6 @@
 package ch.fitfusion.backfusion.workout.repositories
 
-import ch.fitfusion.backfusion.auth.rbac.entities.Account
+import ch.fitfusion.backfusion.account.entities.Account
 import ch.fitfusion.backfusion.workout.entities.Workout
 import org.hibernate.jdbc.Work
 import org.springframework.data.jpa.repository.JpaRepository

@@ -1,6 +1,6 @@
-package ch.fitfusion.backfusion.auth.rbac.repositories
+package ch.fitfusion.backfusion.account.repositories
 
-import ch.fitfusion.backfusion.auth.rbac.entities.Account
+import ch.fitfusion.backfusion.account.entities.Account
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
 import java.util.*
