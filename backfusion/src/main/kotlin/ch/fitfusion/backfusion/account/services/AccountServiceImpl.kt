@@ -34,7 +34,7 @@ class AccountServiceImpl(
 
         val save = accountRepository.save(accountMapper.toEntity(accountIn))
 
-        return AccountOutDTO(AccountDTO(save.username, save.email), ValidationResult.ok())
+        return AccountOutDTO(accountMapper.toDTO(save), ValidationResult.ok())
     }
 
     override fun getAccount(id: Long): AccountDTO? {
