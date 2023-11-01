@@ -4,13 +4,13 @@ import ch.fitfusion.backfusion.common.entities.BaseEntity
 import jakarta.persistence.*
 
 @Entity
-@Table(name = "Post")
-class Recipe : BaseEntity() {
+@Table(name = "Comment")
+class Comment : BaseEntity() {
 
-    @ElementCollection
-    var ingredients: List<String> = mutableListOf()
+    @Column(length = 512)
+    var content: String = ""
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "recipe_id", nullable = false)
     var post: Post? = null
 }

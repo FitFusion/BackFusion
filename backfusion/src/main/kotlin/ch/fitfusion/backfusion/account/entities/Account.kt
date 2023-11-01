@@ -1,6 +1,8 @@
 package ch.fitfusion.backfusion.account.entities
 
 import ch.fitfusion.backfusion.account.entities.listeners.AccountListener
+import ch.fitfusion.backfusion.common.entities.BaseEntity
+import ch.fitfusion.backfusion.post.entities.Post
 import ch.fitfusion.backfusion.workout.entities.Workout
 import jakarta.persistence.*
 import java.util.*
@@ -9,12 +11,7 @@ import java.util.*
 @Entity
 @Table(name = "Account")
 @EntityListeners(AccountListener::class)
-class Account {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    var id: Long? = null
+class Account : BaseEntity() {
 
     @Column
     var username: String = ""
@@ -31,9 +28,6 @@ class Account {
     @Column
     var secondFactorEnabled: Boolean = false
 
-    @Column
-    var creationDate: Date = Date()
-
     @ManyToMany(cascade = [CascadeType.ALL])
     @JoinTable(
         name = "Account_Authority",
@@ -48,4 +42,11 @@ class Account {
         orphanRemoval = true
     )
     var workouts: List<Workout> = mutableListOf()
+
+    @OneToMany(
+        mappedBy = "account",
+        cascade = [CascadeType.ALL],
+        orphanRemoval = true
+    )
+    var posts: List<Post> = mutableListOf()
 }

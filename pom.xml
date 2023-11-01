@@ -144,6 +144,7 @@
                     <executions>
                         <execution>
                             <id>kapt</id>
+                            <phase>generate-sources</phase>
                             <goals>
                                 <goal>kapt</goal>
                             </goals>
@@ -151,7 +152,6 @@
                             <configuration>
                                 <sourceDirs>
                                     <sourceDir>src/main/kotlin</sourceDir>
-                                    <sourceDir>src/main/java</sourceDir>
                                 </sourceDirs>
                                 <annotationProcessorPaths>
                                     <annotationProcessorPath>

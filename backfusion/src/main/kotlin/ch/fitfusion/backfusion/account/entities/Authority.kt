@@ -1,15 +1,11 @@
 package ch.fitfusion.backfusion.account.entities
 
+import ch.fitfusion.backfusion.common.entities.BaseEntity
 import jakarta.persistence.*
 
 @Entity
 @Table(name = "Authority")
-class Authority {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    var id: Long? = null
+class Authority : BaseEntity() {
 
     @Column
     var name: String = ""

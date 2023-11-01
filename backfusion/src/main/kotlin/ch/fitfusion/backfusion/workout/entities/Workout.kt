@@ -8,11 +8,6 @@ import jakarta.persistence.*
 @Table(name = "Workout")
 class Workout : BaseEntity() {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false)
-    var id: Long? = null
-
     @Column(length = 50)
     var name: String = ""
 
