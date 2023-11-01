@@ -2,10 +2,10 @@ package ch.fitfusion.backfusion.account.entities
 
 import ch.fitfusion.backfusion.account.entities.listeners.AccountListener
 import ch.fitfusion.backfusion.common.entities.BaseEntity
+import ch.fitfusion.backfusion.post.entities.Comment
 import ch.fitfusion.backfusion.post.entities.Post
 import ch.fitfusion.backfusion.workout.entities.Workout
 import jakarta.persistence.*
-import java.util.*
 
 
 @Entity
@@ -49,4 +49,11 @@ class Account : BaseEntity() {
         orphanRemoval = true
     )
     var posts: List<Post> = mutableListOf()
+
+    @OneToMany(
+        mappedBy = "account",
+        cascade = [CascadeType.ALL],
+        orphanRemoval = true
+    )
+    var comments: List<Comment> = mutableListOf()
 }

@@ -14,27 +14,27 @@ class Post : BaseEntity() {
     @Column(length = 250)
     var content: String = ""
 
+    @Column
+    var likes: Long = 0
+
+    @Column // TODO: Image
+    var image: String = ""
+
     @OneToOne(
         mappedBy = "post",
         cascade = [CascadeType.ALL],
         orphanRemoval = true
     )
-    var recipe : Recipe? = null
-
-    @ManyToOne
-    @JoinColumn(name = "account_id", nullable = false)
-    var account: Account? = null
-
-    @Column
-    var likes: Long = 0
+    var recipe: Recipe? = null
 
     @OneToMany(
         mappedBy = "post",
         cascade = [CascadeType.ALL],
         orphanRemoval = true
     )
-    var comments : List<Comment>? = null
+    var comments: List<Comment>? = null
 
-    @Column // TODO: Image
-    var image: String = ""
+    @ManyToOne
+    @JoinColumn(name = "account_id", nullable = false)
+    var account: Account? = null
 }

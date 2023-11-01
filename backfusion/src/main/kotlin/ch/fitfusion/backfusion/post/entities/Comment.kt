@@ -1,5 +1,6 @@
 package ch.fitfusion.backfusion.post.entities
 
+import ch.fitfusion.backfusion.account.entities.Account
 import ch.fitfusion.backfusion.common.entities.BaseEntity
 import jakarta.persistence.*
 
@@ -11,6 +12,10 @@ class Comment : BaseEntity() {
     var content: String = ""
 
     @ManyToOne
-    @JoinColumn(name = "recipe_id", nullable = false)
+    @JoinColumn(name = "post_id", nullable = false)
     var post: Post? = null
+
+    @ManyToOne
+    @JoinColumn(name = "account_id", nullable = false)
+    var account: Account? = null
 }

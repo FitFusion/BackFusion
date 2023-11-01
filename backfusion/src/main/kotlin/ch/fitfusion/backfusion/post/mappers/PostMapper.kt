@@ -6,7 +6,7 @@ import org.mapstruct.InheritInverseConfiguration
 import org.mapstruct.Mapper
 import org.mapstruct.Mapping
 
-@Mapper(componentModel = "spring", uses = [RecipeMapper::class])
+@Mapper(componentModel = "spring", uses = [RecipeMapper::class, CommentMapper::class])
 interface PostMapper {
 
     @Mapping(target = "account", ignore = true)

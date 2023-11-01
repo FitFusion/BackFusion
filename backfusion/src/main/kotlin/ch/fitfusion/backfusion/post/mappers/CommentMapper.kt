@@ -1,17 +1,18 @@
 package ch.fitfusion.backfusion.post.mappers
 
-import ch.fitfusion.backfusion.api.post.dtos.RecipeDTO
-import ch.fitfusion.backfusion.post.entities.Recipe
+import ch.fitfusion.backfusion.api.post.dtos.CommentDTO
+import ch.fitfusion.backfusion.post.entities.Comment
 import org.mapstruct.InheritInverseConfiguration
 import org.mapstruct.Mapper
 import org.mapstruct.Mapping
 
 @Mapper(componentModel = "spring")
-interface RecipeMapper {
+interface CommentMapper {
 
+    @Mapping(target = "account", ignore = true)
     @Mapping(target = "post", ignore = true)
-    fun toDTO(entity: Recipe): RecipeDTO
+    fun toDTO(entity: Comment): CommentDTO
 
     @InheritInverseConfiguration
-    fun toEntity(dto: RecipeDTO): Recipe
+    fun toEntity(dto: CommentDTO): Comment
 }
