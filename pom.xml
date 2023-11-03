@@ -137,7 +137,8 @@
     </dependencyManagement>
 
     <build>
-        <testSourceDirectory>${project.basedir}/src/test/kotlin</testSourceDirectory>
+        <sourceDirectory>src/main/kotlin</sourceDirectory>
+
         <pluginManagement>
             <plugins>
                 <plugin>
