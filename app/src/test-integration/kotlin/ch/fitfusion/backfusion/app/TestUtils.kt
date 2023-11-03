@@ -1,4 +1,4 @@
-package integration.test
+package ch.fitfusion.backfusion.app
 
 import io.restassured.specification.RequestSpecification
 

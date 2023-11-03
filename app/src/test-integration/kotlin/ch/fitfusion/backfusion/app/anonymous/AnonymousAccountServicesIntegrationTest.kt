@@ -1,11 +1,10 @@
-package integration.test.anonymous
+package ch.fitfusion.backfusion.app.anonymous
 
 import ch.fitfusion.backfusion.api.account.dtos.AccountInDTO
-import integration.test.ANON_URL
-import integration.test.BackFusionApplicationTest
-import integration.test.When
-import com.google.gson.Gson
+import ch.fitfusion.backfusion.app.ANON_URL
+import ch.fitfusion.backfusion.app.BackFusionApplicationTest
 import org.junit.jupiter.api.Test
+import kotlin.test.assertFalse
 
 private const val ANON_ACCOUNT_URL = "$ANON_URL/account"
 
@@ -21,6 +20,7 @@ class AnonymousAccountServicesIntegrationTest {
 //            .post(ANON_ACCOUNT_URL)
 //        .then()
 //            .statusCode(200)
+        assertFalse { true }
         println("SANANAS")
     }
 

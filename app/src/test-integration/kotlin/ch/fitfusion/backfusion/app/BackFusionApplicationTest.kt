@@ -1,4 +1,4 @@
-package integration.test
+package ch.fitfusion.backfusion.app
 
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.core.annotation.AliasFor

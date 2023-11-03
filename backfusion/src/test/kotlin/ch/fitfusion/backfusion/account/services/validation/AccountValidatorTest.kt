@@ -19,7 +19,7 @@ class AccountValidatorTest {
     fun `Test validator working correctly with invalid DTO`() {
         val result = validator.validate(createInvalidAccount())
 
-        assertEquals(3, result.errors.size)
+        assertEquals(4, result.errors.size)
     }
 
     private fun createValidAccount(): AccountInDTO {

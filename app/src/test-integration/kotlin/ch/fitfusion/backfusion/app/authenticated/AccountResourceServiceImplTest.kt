@@ -1,4 +1,4 @@
-package integration.test.authenticated
+package ch.fitfusion.backfusion.app.authenticated
 
 import org.junit.jupiter.api.Test
 
