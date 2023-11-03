@@ -99,6 +99,13 @@
                 <version>${org.mapstruct.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>io.rest-assured</groupId>
+                <artifactId>rest-assured</artifactId>
+                <version>5.3.2</version>
+                <scope>test</scope>
+            </dependency>
+
             <!-- Swagger -->
             <dependency>
                 <groupId>io.swagger.core.v3</groupId>
@@ -185,6 +192,30 @@
                 <plugin>
                     <artifactId>maven-surefire-plugin</artifactId>
                     <version>2.22.2</version>
+
+                    <configuration>
+                        <excludes>
+                            <include>src/test/kotlin/integration.test/**/*.kt</include>
+                        </excludes>
+                    </configuration>
+
+                    <executions>
+                        <execution>
+                            <id>integration-test</id>
+                            <goals>
+                                <goal>test</goal>
+                            </goals>
+                            <phase>integration-test</phase>
+                            <configuration>
+                                <excludes>
+                                    <exclude>none</exclude>
+                                </excludes>
+                                <includes>
+                                    <include>src/test/kotlin/integration.test/**/*.kt</include>
+                                </includes>
+                            </configuration>
+                        </execution>
+                    </executions>
                 </plugin>
 
                 <plugin>
