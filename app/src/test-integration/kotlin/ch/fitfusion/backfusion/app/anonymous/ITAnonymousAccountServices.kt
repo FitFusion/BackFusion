@@ -9,7 +9,7 @@ import kotlin.test.assertFalse
 private const val ANON_ACCOUNT_URL = "$ANON_URL/account"
 
 @BackFusionApplicationTest
-class AnonymousAccountServicesIntegrationTest {
+class ITAnonymousAccountServices {
 
     @Test
     fun `Test registration with valid input data`() {

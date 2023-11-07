@@ -2,6 +2,7 @@ package ch.fitfusion.backfusion.account.services.validation
 
 import ch.fitfusion.backfusion.api.account.dtos.AccountInDTO
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertFalse
 import org.junit.jupiter.api.Test
 
 class AccountValidatorTest {
@@ -20,6 +21,7 @@ class AccountValidatorTest {
         val result = validator.validate(createInvalidAccount())
 
         assertEquals(4, result.errors.size)
+        assertFalse { true }
     }
 
     private fun createValidAccount(): AccountInDTO {

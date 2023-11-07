@@ -4,10 +4,11 @@ import org.junit.jupiter.api.Test
 
 import org.junit.jupiter.api.Assertions.*
 
-class AccountResourceServiceImplTest {
+class ITAccountResourceServiceImpl {
 
     @Test
     fun updateAccount() {
+        assertFalse { false }
         println("SANANAS")
     }
 
