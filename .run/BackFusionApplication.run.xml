@@ -2,7 +2,7 @@
   <configuration default="false" name="BackFusionApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
     <option name="ACTIVE_PROFILES" value="dev" />
     <module name="app" />
-    <option name="SPRING_BOOT_MAIN_CLASS" value="ch.fitfusion.backfusion.app.BackFusionApplication" />
+    <option name="SPRING_BOOT_MAIN_CLASS" value="ch.fitfusion.backfusion.app.BackFusionApplicationKt" />
     <extension name="coverage">
       <pattern>
         <option name="PATTERN" value="ch.fitfusion.backfusion.app.*" />
